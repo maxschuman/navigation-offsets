@@ -44,7 +44,7 @@
                     <navigationItem key="navigationItem" id="Miu-cj-V0g"/>
                     <connections>
                         <outlet property="locationSearchTextField" destination="fZD-DA-FID" id="tJ3-MC-cAC"/>
-                        <outlet property="searchBar" destination="gi4-R4-Iwe" id="QKu-yj-EcI"/>
+                        <outlet property="searchbar" destination="gi4-R4-Iwe" id="QKu-yj-EcI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
