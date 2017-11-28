@@ -12,6 +12,7 @@ import Mapbox
 class SelectorViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var destinationField: UITextField!
+    @IBOutlet weak var backButton: UIButton!
     
     var routeModel: RouteModel?
     
@@ -47,7 +48,10 @@ class SelectorViewController: UIViewController {
     
     
     @IBAction func back(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        if sender === backButton{
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     //MARK: Actions

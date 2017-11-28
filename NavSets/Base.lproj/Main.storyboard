@@ -154,6 +154,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="back:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="9JF-5a-YFC"/>
+                                                            <segue destination="eHG-Op-SSl" kind="unwind" unwindAction="unwindToBaseWithSender:" id="aG7-on-I01"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -197,10 +198,12 @@
                         <viewLayoutGuide key="safeArea" id="IYO-mn-RWX"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="Xo3-jQ-Vs5" id="B26-eP-8Gq"/>
                         <outlet property="destinationField" destination="TjJ-7V-LcZ" id="4gQ-xa-ZfV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NoZ-4C-KVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eHG-Op-SSl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1580" y="133.5832083958021"/>
         </scene>

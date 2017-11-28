@@ -45,6 +45,9 @@ class BaseViewController: UIViewController, UITextFieldDelegate {
         // Hide keyboard
         textField.resignFirstResponder()
         
+        // Clear view
+        clearRouteModel()
+        
 //        // Perform segue to selector view
 //        performSegue(withIdentifier: "LocationSelected", sender: textField)
         return true
@@ -85,7 +88,33 @@ class BaseViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
+    
+    //MARK: Actions
+    @IBAction func unwindToBase(sender: UIStoryboardSegue){
+        if let sourceViewController = sender.source as? SelectorViewController, let routeModel = sourceViewController.routeModel {
+            // set route model to be the model from the previous view
+            self.routeModel = routeModel
+            updateRouteModel()
+            
 
+
+            
+        }
+    }
+    
+    //MARK: Private Methods
+    private func updateRouteModel(){
+        self.locationSearchTextField.text = routeModel?.destinationName
+        // We can add code here that drops the pin on the map for the chosen location, sets the search bar to the location name, and centers the map on the chosen location
+    }
+    
+    private func clearRouteModel(){
+        self.routeModel = nil
+        
+        self.locationSearchTextField.text = nil
+        
+        // Add code here that clears out everything on view impacted by route model
+    }
 
 }
 
