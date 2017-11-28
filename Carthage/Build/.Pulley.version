@@ -1,0 +1,9 @@
+{
+  "commitish" : "1.4",
+  "iOS" : [
+    {
+      "name" : "Pulley",
+      "hash" : "61fa308f5d2e9dc292070f31777b1aeb66bdc9276c9251a748c3b13057c958e1"
+    }
+  ]
+}

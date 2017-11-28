@@ -1,0 +1,9 @@
+{
+  "commitish" : "v0.3.5",
+  "iOS" : [
+    {
+      "name" : "OSRMTextInstructions",
+      "hash" : "1c0640dcfc4d6caab36554ed97c5e6c3e9ebfdef1a96e8788d2a814fc1e65641"
+    }
+  ]
+}

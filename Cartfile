@@ -1,0 +1,2 @@
+github "mapbox/mapbox-navigation-ios" ~> 0.8.0
+github "mapbox/MapboxGeocoder.swift" ~> 0.6
