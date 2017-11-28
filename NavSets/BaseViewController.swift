@@ -14,10 +14,13 @@ class BaseViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var locationSearchTextField: UITextField!
     
     
-    var destinationName: String?
+    var routeModel: RouteModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // initialize route model with default arguments
+        self.routeModel = RouteModel()
         
         // set self as delegate for text field
         locationSearchTextField.delegate = self
@@ -48,12 +51,15 @@ class BaseViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        destinationName = textField.text
+//        routeModel!.destinationName = textField.text
+        return
     }
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        
+        
         
         // perform appropriate setup for destination controller
         let id = segue.identifier
@@ -68,8 +74,11 @@ class BaseViewController: UIViewController, UITextFieldDelegate {
                 fatalError("Invalid sender: \(sender)")
             }
             
-            if let destinationName = textField.text {
-                destination.destinationName = destinationName
+            // update route model object for passing to selector view
+            if let destinationName = textField.text{
+                self.routeModel!.destinationName = destinationName
+                
+                destination.routeModel = self.routeModel
             }
         default:
             fatalError("Did not recognize identifier: \(segue.identifier ?? "")")

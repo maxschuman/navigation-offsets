@@ -13,7 +13,7 @@ class SelectorViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var destinationField: UITextField!
     
-    var destinationName: String?
+    var routeModel: RouteModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class SelectorViewController: UIViewController {
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView) // send the map view to the back, behind the other added UI elements
         
-        if let destinationName = destinationName {
-            destinationField.text = destinationName
+        if let destinationName = routeModel?.destinationName {
+             destinationField.text = destinationName
         }
     }
 

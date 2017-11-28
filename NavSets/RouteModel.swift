@@ -10,13 +10,20 @@ import Mapbox
 
 class RouteModel{
     //MARK: Properties
-    var startLocation: CLLocationCoordinate2D
+    var startLocation: CLLocationCoordinate2D?
     var startName: String?
-    var destinationLocation: CLLocationCoordinate2D
-    var destinationName: String
+    var destinationLocation: CLLocationCoordinate2D?
+    var destinationName: String?
     // var Route - the route object. Add in when mapbox navigation is all hooked up and ready to go
     
     //MARK: Initialization
+    init() {
+        //Initialize stored properties
+        self.startLocation = nil
+        self.startName = nil
+        self.destinationLocation = nil
+        self.destinationName = nil
+    }
     init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String){
         
         //Initialize stored properties
