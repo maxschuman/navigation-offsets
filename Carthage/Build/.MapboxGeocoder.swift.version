@@ -1,0 +1,9 @@
+{
+  "commitish" : "v0.6.3",
+  "iOS" : [
+    {
+      "name" : "MapboxGeocoder",
+      "hash" : "381540831e99c46af5958e8e3b760ce75dadb48fcd8b00ed1a4537c71bd20a50"
+    }
+  ]
+}

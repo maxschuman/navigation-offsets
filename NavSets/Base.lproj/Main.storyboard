@@ -27,6 +27,11 @@
                                     <segue destination="dhc-mZ-B8u" kind="presentation" identifier="LocationSelected" id="ttO-mp-O33"/>
                                 </connections>
                             </textField>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gi4-R4-Iwe">
+                                <rect key="frame" x="0.0" y="82" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -39,6 +44,7 @@
                     <navigationItem key="navigationItem" id="Miu-cj-V0g"/>
                     <connections>
                         <outlet property="locationSearchTextField" destination="fZD-DA-FID" id="tJ3-MC-cAC"/>
+                        <outlet property="searchBar" destination="gi4-R4-Iwe" id="QKu-yj-EcI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

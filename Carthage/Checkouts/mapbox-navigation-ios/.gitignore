@@ -1,0 +1,16 @@
+MapboxNavigation.xcworkspace
+
+.DS_Store
+
+xcuserdata
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+Pods/
+
+Carthage/Build
+Carthage/Checkouts
+/documentation
+/build

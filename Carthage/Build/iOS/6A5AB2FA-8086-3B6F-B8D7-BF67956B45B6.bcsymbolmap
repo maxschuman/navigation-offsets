@@ -1,0 +1,138 @@
+BCSymbolMap Version: 2.0
+-[AWSAuthUIConfiguration init]
+-[AWSAuthUIConfiguration addAWSSignInButtonViewClass:]
+-[AWSAuthUIConfiguration getAllSignInButtonViews]
+-[AWSAuthUIConfiguration hasSignInButtonView]
+-[AWSAuthUIConfiguration logoImage]
+-[AWSAuthUIConfiguration setLogoImage:]
+-[AWSAuthUIConfiguration backgroundColor]
+-[AWSAuthUIConfiguration setBackgroundColor:]
+-[AWSAuthUIConfiguration registeredSignInButtonViews]
+-[AWSAuthUIConfiguration setRegisteredSignInButtonViews:]
+-[AWSAuthUIConfiguration enableUserPoolsUI]
+-[AWSAuthUIConfiguration setEnableUserPoolsUI:]
+-[AWSAuthUIConfiguration isBackgroundColorFullScreen]
+-[AWSAuthUIConfiguration setIsBackgroundColorFullScreen:]
+-[AWSAuthUIConfiguration font]
+-[AWSAuthUIConfiguration setFont:]
+-[AWSAuthUIConfiguration canCancel]
+-[AWSAuthUIConfiguration setCanCancel:]
+-[AWSAuthUIConfiguration .cxx_destruct]
+_OBJC_IVAR_$_AWSAuthUIConfiguration.logoImage
+_OBJC_IVAR_$_AWSAuthUIConfiguration.backgroundColor
+_OBJC_IVAR_$_AWSAuthUIConfiguration.registeredSignInButtonViews
+_OBJC_IVAR_$_AWSAuthUIConfiguration.enableUserPoolsUI
+_OBJC_IVAR_$_AWSAuthUIConfiguration.isBackgroundColorFullScreen
+_OBJC_IVAR_$_AWSAuthUIConfiguration.font
+_OBJC_IVAR_$_AWSAuthUIConfiguration._canCancel
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_AWSUIConfiguration
+l_OBJC_LABEL_PROTOCOL_$_AWSUIConfiguration
+Apple LLVM version 8.0.0 (clang-800.0.38)
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navapp_test2/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthUI/AWSAuthUIConfiguration.m
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navapp_test2/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navapp_test2/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthUI/AWSAuthUIConfiguration.h
++[AWSSignInViewController initialize]
+-[AWSSignInViewController initWithCoder:]
+-[AWSSignInViewController viewDidLoad]
+-[AWSSignInViewController touchesBegan:withEvent:]
+-[AWSSignInViewController handleLoginWithSignInProvider:]
+___57-[AWSSignInViewController handleLoginWithSignInProvider:]_block_invoke
+___57-[AWSSignInViewController handleLoginWithSignInProvider:]_block_invoke_2
+___copy_helper_block_
+___destroy_helper_block_
+___copy_helper_block_.65
+___destroy_helper_block_.66
+-[AWSSignInViewController setUpUserPoolsUI]
+-[AWSSignInViewController setUpLogo:]
+-[AWSSignInViewController setUpBackground:]
+-[AWSSignInViewController setUpResponders]
+-[AWSSignInViewController setUpNavigationController]
+-[AWSSignInViewController setUpFont]
+-[AWSSignInViewController barButtonClosePressed]
+-[AWSSignInViewController addButtonViewstoSignInView]
++[AWSSignInViewController getImageFromBundle:]
++[AWSSignInViewController getUIStoryboardFromBundle:]
++[AWSSignInViewController getViewControllerWithName:storyboard:]
++[AWSSignInViewController getAWSSignInViewControllerWithconfiguration:]
+-[AWSSignInViewController handleUserPoolSignIn]
+-[AWSSignInViewController handleUserPoolSignUp]
+-[AWSSignInViewController handleUserPoolForgotPassword]
+-[AWSSignInViewController onLoginWithSignInProvider:result:error:]
+___66-[AWSSignInViewController onLoginWithSignInProvider:result:error:]_block_invoke
+___copy_helper_block_.304
+___destroy_helper_block_.305
+-[AWSSignInViewController canCancel]
+-[AWSSignInViewController setCanCancel:]
+-[AWSSignInViewController config]
+-[AWSSignInViewController setConfig:]
+-[AWSSignInViewController signInButton]
+-[AWSSignInViewController setSignInButton:]
+-[AWSSignInViewController signUpButton]
+-[AWSSignInViewController setSignUpButton:]
+-[AWSSignInViewController forgotPasswordButton]
+-[AWSSignInViewController setForgotPasswordButton:]
+-[AWSSignInViewController orSignInWithLabel]
+-[AWSSignInViewController setOrSignInWithLabel:]
+-[AWSSignInViewController logoView]
+-[AWSSignInViewController setLogoView:]
+-[AWSSignInViewController tableFormView]
+-[AWSSignInViewController setTableFormView:]
+-[AWSSignInViewController tableView]
+-[AWSSignInViewController setTableView:]
+-[AWSSignInViewController logoViewHeight]
+-[AWSSignInViewController setLogoViewHeight:]
+-[AWSSignInViewController completionHandler]
+-[AWSSignInViewController setCompletionHandler:]
+-[AWSSignInViewController passwordRow]
+-[AWSSignInViewController setPasswordRow:]
+-[AWSSignInViewController userNameRow]
+-[AWSSignInViewController setUserNameRow:]
+-[AWSSignInViewController tableDelegate]
+-[AWSSignInViewController setTableDelegate:]
+-[AWSSignInViewController providerRow1]
+-[AWSSignInViewController setProviderRow1:]
+-[AWSSignInViewController providerRow2]
+-[AWSSignInViewController setProviderRow2:]
+-[AWSSignInViewController providerRow3]
+-[AWSSignInViewController setProviderRow3:]
+-[AWSSignInViewController .cxx_destruct]
+___block_descriptor_tmp
+___block_descriptor_tmp.68
+___block_descriptor_tmp.306
+_OBJC_IVAR_$_AWSSignInViewController.canCancel
+_OBJC_IVAR_$_AWSSignInViewController.config
+_OBJC_IVAR_$_AWSSignInViewController._signInButton
+_OBJC_IVAR_$_AWSSignInViewController._signUpButton
+_OBJC_IVAR_$_AWSSignInViewController._forgotPasswordButton
+_OBJC_IVAR_$_AWSSignInViewController._orSignInWithLabel
+_OBJC_IVAR_$_AWSSignInViewController._logoView
+_OBJC_IVAR_$_AWSSignInViewController._tableFormView
+_OBJC_IVAR_$_AWSSignInViewController._tableView
+_OBJC_IVAR_$_AWSSignInViewController._logoViewHeight
+_OBJC_IVAR_$_AWSSignInViewController._completionHandler
+_OBJC_IVAR_$_AWSSignInViewController._passwordRow
+_OBJC_IVAR_$_AWSSignInViewController._userNameRow
+_OBJC_IVAR_$_AWSSignInViewController._tableDelegate
+_OBJC_IVAR_$_AWSSignInViewController._providerRow1
+_OBJC_IVAR_$_AWSSignInViewController._providerRow2
+_OBJC_IVAR_$_AWSSignInViewController._providerRow3
+l_OBJC_PROTOCOL_$_AWSSignInDelegate
+l_OBJC_LABEL_PROTOCOL_$_AWSSignInDelegate
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navapp_test2/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthUI/AWSSignInViewController.m
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navapp_test2/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthUI/AWSSignInViewController.h
+__destroy_helper_block_
+__copy_helper_block_
+__66-[AWSSignInViewController onLoginWithSignInProvider:result:error:]_block_invoke
+CGRectMake
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+__57-[AWSSignInViewController handleLoginWithSignInProvider:]_block_invoke_2
+__57-[AWSSignInViewController handleLoginWithSignInProvider:]_block_invoke
++[AWSAuthUIViewController presentViewControllerWithNavigationController:configuration:completionHandler:]
+___105+[AWSAuthUIViewController presentViewControllerWithNavigationController:configuration:completionHandler:]_block_invoke
++[AWSAuthUIViewController getDefaultAuthUIConfiguration]
++[AWSAuthUIViewController isConfigurationKeyPresent:]
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navapp_test2/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthUI/AWSAuthUIViewController.m
+__105+[AWSAuthUIViewController presentViewControllerWithNavigationController:configuration:completionHandler:]_block_invoke
+/Users/adamgreenstein/Library/Caches/org.carthage.CarthageKit/DerivedData/8.0_8A218a/aws-sdk-ios/2.6.6/Build/Intermediates/ArchiveIntermediates/AWSAuthUI/IntermediateBuildFilesPath/AWSAuthSDK.build/Release-iphoneos/AWSAuthUI.build/DerivedSources/AWSAuthUI_vers.c

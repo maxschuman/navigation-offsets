@@ -1,0 +1,10 @@
+framework module Polyline {
+  umbrella header "Polyline.h"
+
+  export *
+  module * { export * }
+}
+
+module Polyline.Swift {
+    header "Polyline-Swift.h"
+}

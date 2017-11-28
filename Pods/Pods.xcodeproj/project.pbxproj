@@ -1,0 +1,799 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		69D127A75DA9A79379EA8DF773EADF16 /* Pods-NavSetsUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 553A7455219D52157EB138EC945ACD12 /* Pods-NavSetsUITests-dummy.m */; };
+		779B5939EFFC231BCF17CD8202657FEC /* Pods-NavSets-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F9DA7867766423E6093808D46D68A270 /* Pods-NavSets-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87ECEAF0F17853026E633FFACC9037AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		8A2C07962E6286EAE118B7CC82EC66F2 /* Pods-NavSetsTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B0B9A0B840191AFB4ED6B90B21E8CCEA /* Pods-NavSetsTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		98ECE699DBBE9EF45B90D114AC6E6CFF /* Pods-NavSets-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85B7B79534DCC6056428508612CDAC17 /* Pods-NavSets-dummy.m */; };
+		BCD04621844B0FD2F1F9A087AE1DA406 /* Pods-NavSetsTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC8C43459DB32E002F26CC99F3A38E8 /* Pods-NavSetsTests-dummy.m */; };
+		C08B0A24A23564CB50077C520A9EC4E8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		CCB28055A3C1EF77C8539692911EE676 /* Pods-NavSetsUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FE158A9907DA47EE966417E94D5B345 /* Pods-NavSetsUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CCF6B22960B734F2886B08E2BC711D72 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0716B12991AB4BFFDE7F82B99D6AE052 /* Pods-NavSetsUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NavSetsUITests.modulemap"; sourceTree = "<group>"; };
+		07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacePicker.framework; path = Frameworks/GooglePlacePicker.framework; sourceTree = "<group>"; };
+		07AE4BFFBF4F89E0E877BBE78F0488F1 /* Pods-NavSetsUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NavSetsUITests-resources.sh"; sourceTree = "<group>"; };
+		0DC8C43459DB32E002F26CC99F3A38E8 /* Pods-NavSetsTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NavSetsTests-dummy.m"; sourceTree = "<group>"; };
+		0FCEC39746A4AF843CA6E3318E24968B /* Pods_NavSets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NavSets.framework; path = "Pods-NavSets.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FE31D3C462605115CD9167E2456EFC3 /* Pods-NavSets-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NavSets-frameworks.sh"; sourceTree = "<group>"; };
+		1117A6D1FE68A6F983D560933AF5E265 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		1E85C2772110FE571F59461BEE9F69DF /* Pods-NavSetsTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NavSetsTests-frameworks.sh"; sourceTree = "<group>"; };
+		2A3F7E8756B5CD813C369E385CED175D /* Pods-NavSetsTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NavSetsTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3575AF90ABD3D23ADE44E32BDA47DB99 /* Pods-NavSets-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NavSets-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4FDBFF9A38A8A281A8B1936AF19A5B84 /* Pods-NavSets-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NavSets-resources.sh"; sourceTree = "<group>"; };
+		553A7455219D52157EB138EC945ACD12 /* Pods-NavSetsUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NavSetsUITests-dummy.m"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7FE158A9907DA47EE966417E94D5B345 /* Pods-NavSetsUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NavSetsUITests-umbrella.h"; sourceTree = "<group>"; };
+		8191E9F055C883559624EAEDDCB8F59B /* Pods-NavSetsUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NavSetsUITests-frameworks.sh"; sourceTree = "<group>"; };
+		82EC094DCB8FCDD05EE360CD1C84112F /* Pods_NavSetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NavSetsTests.framework; path = "Pods-NavSetsTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82F4276CD85800D57BCC176701845CC6 /* Pods-NavSetsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NavSetsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		85B7B79534DCC6056428508612CDAC17 /* Pods-NavSets-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NavSets-dummy.m"; sourceTree = "<group>"; };
+		86C2829A2211E4CF6B65E8A7EC8AF659 /* Pods_NavSetsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_NavSetsUITests.framework; path = "Pods-NavSetsUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B001921CF62E2574CC5E78A359F7265 /* Pods-NavSetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NavSetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8B6128C87D59D977AB03E0E4EF899C5D /* Pods-NavSetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NavSetsTests.release.xcconfig"; sourceTree = "<group>"; };
+		8BCCCA295DEE22197B0C283775AB5A26 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		8EB51BA94DE2EC778C2C7BE55F34EB0C /* Pods-NavSets-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NavSets-acknowledgements.plist"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		95FE11AD65E9C7FD739893AD3B563ADB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AE85C532C3602A7BD5CB91CC5042906 /* Pods-NavSetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NavSetsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A0C001262E2295166B3DB7CC5A0DDED7 /* Pods-NavSets.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NavSets.modulemap"; sourceTree = "<group>"; };
+		B0B9A0B840191AFB4ED6B90B21E8CCEA /* Pods-NavSetsTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NavSetsTests-umbrella.h"; sourceTree = "<group>"; };
+		B9B940E1693884E5C7E751D263379D72 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		BFFC7D65BE7F5CEB505FF9BAE3B57CA2 /* Pods-NavSetsUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NavSetsUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C89A587D1CFCB3EBA3CB7F1D4C903D1E /* Pods-NavSets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NavSets.release.xcconfig"; sourceTree = "<group>"; };
+		D1DBCD0071D70866EBEFA8E983E0A2FE /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		D57A28887B9E80E29D36BD414E63A790 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		D8081DEB4570E602099D31440DFC45BC /* Pods-NavSets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NavSets.debug.xcconfig"; sourceTree = "<group>"; };
+		DAFDAD0C299553924717E09C90199DC8 /* Pods-NavSetsTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NavSetsTests-resources.sh"; sourceTree = "<group>"; };
+		DCFF4D637E59051EC0D7EEBEAC7C4E7F /* Pods-NavSetsTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-NavSetsTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DD2515867326EB9B187B6D61FC1976B9 /* Pods-NavSetsUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NavSetsUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		DE6D813C2480BFCB39E614B9535A00EF /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
+		E5C2E25FABBD857A4271C636B9AE8D05 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E75F4C1C6FEAD3A68C11E872DA9F9FEA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3E0025D4D09524AA5F624F97EFD8E67 /* Pods-NavSetsTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-NavSetsTests.modulemap"; sourceTree = "<group>"; };
+		F9DA7867766423E6093808D46D68A270 /* Pods-NavSets-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-NavSets-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		70631C0F64329C17CC13E911AF7DD209 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				87ECEAF0F17853026E633FFACC9037AD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E59D8D08866301E12D362E877BA68813 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCF6B22960B734F2886B08E2BC711D72 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F510A6E06EF2BC98E894A1C1850C559E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C08B0A24A23564CB50077C520A9EC4E8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		057612C31241123A1B53E2F8FEE23AB0 /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */,
+				DADFB7FC1731804E229D4AEF6493F2F7 /* Resources */,
+			);
+			name = GooglePlaces;
+			path = GooglePlaces;
+			sourceTree = "<group>";
+		};
+		1F0649770F36448D1949E107980680C1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				61C4CA10EEF8BC006BD8D166F4D07219 /* Pods-NavSets */,
+				4F026143810AC8812B5F77F024839933 /* Pods-NavSetsTests */,
+				A5FA6C8339D7E5156F4C6056FA6459C5 /* Pods-NavSetsUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		45A6375AD18305E8BA7B79AD1BE61E9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BCCCA295DEE22197B0C283775AB5A26 /* GoogleMaps.framework */,
+				1117A6D1FE68A6F983D560933AF5E265 /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4F026143810AC8812B5F77F024839933 /* Pods-NavSetsTests */ = {
+			isa = PBXGroup;
+			children = (
+				95FE11AD65E9C7FD739893AD3B563ADB /* Info.plist */,
+				F3E0025D4D09524AA5F624F97EFD8E67 /* Pods-NavSetsTests.modulemap */,
+				DCFF4D637E59051EC0D7EEBEAC7C4E7F /* Pods-NavSetsTests-acknowledgements.markdown */,
+				2A3F7E8756B5CD813C369E385CED175D /* Pods-NavSetsTests-acknowledgements.plist */,
+				0DC8C43459DB32E002F26CC99F3A38E8 /* Pods-NavSetsTests-dummy.m */,
+				1E85C2772110FE571F59461BEE9F69DF /* Pods-NavSetsTests-frameworks.sh */,
+				DAFDAD0C299553924717E09C90199DC8 /* Pods-NavSetsTests-resources.sh */,
+				B0B9A0B840191AFB4ED6B90B21E8CCEA /* Pods-NavSetsTests-umbrella.h */,
+				82F4276CD85800D57BCC176701845CC6 /* Pods-NavSetsTests.debug.xcconfig */,
+				8B6128C87D59D977AB03E0E4EF899C5D /* Pods-NavSetsTests.release.xcconfig */,
+			);
+			name = "Pods-NavSetsTests";
+			path = "Target Support Files/Pods-NavSetsTests";
+			sourceTree = "<group>";
+		};
+		61C4CA10EEF8BC006BD8D166F4D07219 /* Pods-NavSets */ = {
+			isa = PBXGroup;
+			children = (
+				E75F4C1C6FEAD3A68C11E872DA9F9FEA /* Info.plist */,
+				A0C001262E2295166B3DB7CC5A0DDED7 /* Pods-NavSets.modulemap */,
+				3575AF90ABD3D23ADE44E32BDA47DB99 /* Pods-NavSets-acknowledgements.markdown */,
+				8EB51BA94DE2EC778C2C7BE55F34EB0C /* Pods-NavSets-acknowledgements.plist */,
+				85B7B79534DCC6056428508612CDAC17 /* Pods-NavSets-dummy.m */,
+				0FE31D3C462605115CD9167E2456EFC3 /* Pods-NavSets-frameworks.sh */,
+				4FDBFF9A38A8A281A8B1936AF19A5B84 /* Pods-NavSets-resources.sh */,
+				F9DA7867766423E6093808D46D68A270 /* Pods-NavSets-umbrella.h */,
+				D8081DEB4570E602099D31440DFC45BC /* Pods-NavSets.debug.xcconfig */,
+				C89A587D1CFCB3EBA3CB7F1D4C903D1E /* Pods-NavSets.release.xcconfig */,
+			);
+			name = "Pods-NavSets";
+			path = "Target Support Files/Pods-NavSets";
+			sourceTree = "<group>";
+		};
+		64088E65DDD30CCD412A2BE4D609E272 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FCEC39746A4AF843CA6E3318E24968B /* Pods_NavSets.framework */,
+				82EC094DCB8FCDD05EE360CD1C84112F /* Pods_NavSetsTests.framework */,
+				86C2829A2211E4CF6B65E8A7EC8AF659 /* Pods_NavSetsUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A999BD5B4C2C01904FC59776164FBE1 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				45A6375AD18305E8BA7B79AD1BE61E9D /* Frameworks */,
+				E8816D4FFB28FB18F0B906E7CC732470 /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				C62832EC902B481843EFC870F9D95CC2 /* Pods */,
+				64088E65DDD30CCD412A2BE4D609E272 /* Products */,
+				1F0649770F36448D1949E107980680C1 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8FFA7EAE118844748AD9685060A6B673 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FD4ED290151C28ABCF7A3EA0217355EB /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5FA6C8339D7E5156F4C6056FA6459C5 /* Pods-NavSetsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E5C2E25FABBD857A4271C636B9AE8D05 /* Info.plist */,
+				0716B12991AB4BFFDE7F82B99D6AE052 /* Pods-NavSetsUITests.modulemap */,
+				BFFC7D65BE7F5CEB505FF9BAE3B57CA2 /* Pods-NavSetsUITests-acknowledgements.markdown */,
+				DD2515867326EB9B187B6D61FC1976B9 /* Pods-NavSetsUITests-acknowledgements.plist */,
+				553A7455219D52157EB138EC945ACD12 /* Pods-NavSetsUITests-dummy.m */,
+				8191E9F055C883559624EAEDDCB8F59B /* Pods-NavSetsUITests-frameworks.sh */,
+				07AE4BFFBF4F89E0E877BBE78F0488F1 /* Pods-NavSetsUITests-resources.sh */,
+				7FE158A9907DA47EE966417E94D5B345 /* Pods-NavSetsUITests-umbrella.h */,
+				8B001921CF62E2574CC5E78A359F7265 /* Pods-NavSetsUITests.debug.xcconfig */,
+				9AE85C532C3602A7BD5CB91CC5042906 /* Pods-NavSetsUITests.release.xcconfig */,
+			);
+			name = "Pods-NavSetsUITests";
+			path = "Target Support Files/Pods-NavSetsUITests";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C62832EC902B481843EFC870F9D95CC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E5C0912CEC7444CFF51EFFE502270519 /* GoogleMaps */,
+				CCA175DF4D87459CA14C4E01BCFDEF95 /* GooglePlacePicker */,
+				057612C31241123A1B53E2F8FEE23AB0 /* GooglePlaces */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CCA175DF4D87459CA14C4E01BCFDEF95 /* GooglePlacePicker */ = {
+			isa = PBXGroup;
+			children = (
+				9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */,
+				CCDB8ACB50B37F1810F3A87BA87382A7 /* Resources */,
+			);
+			name = GooglePlacePicker;
+			path = GooglePlacePicker;
+			sourceTree = "<group>";
+		};
+		CCDB8ACB50B37F1810F3A87BA87382A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE6D813C2480BFCB39E614B9535A00EF /* GooglePlacePicker.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DADFB7FC1731804E229D4AEF6493F2F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B9B940E1693884E5C7E751D263379D72 /* GooglePlaces.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E5C0912CEC7444CFF51EFFE502270519 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				8FFA7EAE118844748AD9685060A6B673 /* Base */,
+				7A999BD5B4C2C01904FC59776164FBE1 /* Maps */,
+			);
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		E8816D4FFB28FB18F0B906E7CC732470 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D57A28887B9E80E29D36BD414E63A790 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FD4ED290151C28ABCF7A3EA0217355EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1DBCD0071D70866EBEFA8E983E0A2FE /* GoogleMapsBase.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		049E5E926E1237EED9B12CDDA2B4D6DC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CCB28055A3C1EF77C8539692911EE676 /* Pods-NavSetsUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32DDE25BAF181CF5AD3F895B524E15BC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A2C07962E6286EAE118B7CC82EC66F2 /* Pods-NavSetsTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F93F609170ACD8EDA1E7F99CF80BA369 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				779B5939EFFC231BCF17CD8202657FEC /* Pods-NavSets-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		210E453A73F946971C9BDC9444395C03 /* Pods-NavSetsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D71040C97FED0B3DFEC8E9B5DBF90A09 /* Build configuration list for PBXNativeTarget "Pods-NavSetsTests" */;
+			buildPhases = (
+				A847A2D77B7D99BB692EBA54D66EBD40 /* Sources */,
+				E59D8D08866301E12D362E877BA68813 /* Frameworks */,
+				32DDE25BAF181CF5AD3F895B524E15BC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NavSetsTests";
+			productName = "Pods-NavSetsTests";
+			productReference = 82EC094DCB8FCDD05EE360CD1C84112F /* Pods_NavSetsTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9497C026538FEFCAECFB49A10D91E670 /* Pods-NavSetsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E54D42EC1F372BCD7A024185A212AEAC /* Build configuration list for PBXNativeTarget "Pods-NavSetsUITests" */;
+			buildPhases = (
+				B282E162802739A0C0ADB702CCEDF229 /* Sources */,
+				70631C0F64329C17CC13E911AF7DD209 /* Frameworks */,
+				049E5E926E1237EED9B12CDDA2B4D6DC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NavSetsUITests";
+			productName = "Pods-NavSetsUITests";
+			productReference = 86C2829A2211E4CF6B65E8A7EC8AF659 /* Pods_NavSetsUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F1D69B58FF6B770B055EB17477E2D669 /* Pods-NavSets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF2D67ACD81D15EE08AC802A17D72364 /* Build configuration list for PBXNativeTarget "Pods-NavSets" */;
+			buildPhases = (
+				769709599AB63D68D45CD2BFEC80A8E2 /* Sources */,
+				F510A6E06EF2BC98E894A1C1850C559E /* Frameworks */,
+				F93F609170ACD8EDA1E7F99CF80BA369 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-NavSets";
+			productName = "Pods-NavSets";
+			productReference = 0FCEC39746A4AF843CA6E3318E24968B /* Pods_NavSets.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 64088E65DDD30CCD412A2BE4D609E272 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1D69B58FF6B770B055EB17477E2D669 /* Pods-NavSets */,
+				210E453A73F946971C9BDC9444395C03 /* Pods-NavSetsTests */,
+				9497C026538FEFCAECFB49A10D91E670 /* Pods-NavSetsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		769709599AB63D68D45CD2BFEC80A8E2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98ECE699DBBE9EF45B90D114AC6E6CFF /* Pods-NavSets-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A847A2D77B7D99BB692EBA54D66EBD40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCD04621844B0FD2F1F9A087AE1DA406 /* Pods-NavSetsTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B282E162802739A0C0ADB702CCEDF229 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69D127A75DA9A79379EA8DF773EADF16 /* Pods-NavSetsUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D23278938ADF334174C5BF2A4B6B1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		22C861AC208C1C4CE115D9C97458BC2E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B6128C87D59D977AB03E0E4EF899C5D /* Pods-NavSetsTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NavSetsTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NavSetsTests/Pods-NavSetsTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NavSetsTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3E54B6984DD8336D3D3ADBF5C0BF3D4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AE85C532C3602A7BD5CB91CC5042906 /* Pods-NavSetsUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NavSetsUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NavSetsUITests/Pods-NavSetsUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NavSetsUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4BDEB208CBEB99B558E9F1FB27C4A658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8081DEB4570E602099D31440DFC45BC /* Pods-NavSets.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NavSets/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NavSets/Pods-NavSets.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NavSets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		80FBBED3E35BCB993BF2BF5B716E18E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B001921CF62E2574CC5E78A359F7265 /* Pods-NavSetsUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NavSetsUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NavSetsUITests/Pods-NavSetsUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NavSetsUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8786DE4F5AF2BF7468179176AAC4AF65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C89A587D1CFCB3EBA3CB7F1D4C903D1E /* Pods-NavSets.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NavSets/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NavSets/Pods-NavSets.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NavSets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		995C3A53DEAA96B47E756185345E180D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		CC67158D31BEC55C2DD59627D99DC994 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82F4276CD85800D57BCC176701845CC6 /* Pods-NavSetsTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-NavSetsTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-NavSetsTests/Pods-NavSetsTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_NavSetsTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				995C3A53DEAA96B47E756185345E180D /* Debug */,
+				1D23278938ADF334174C5BF2A4B6B1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D71040C97FED0B3DFEC8E9B5DBF90A09 /* Build configuration list for PBXNativeTarget "Pods-NavSetsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC67158D31BEC55C2DD59627D99DC994 /* Debug */,
+				22C861AC208C1C4CE115D9C97458BC2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E54D42EC1F372BCD7A024185A212AEAC /* Build configuration list for PBXNativeTarget "Pods-NavSetsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80FBBED3E35BCB993BF2BF5B716E18E2 /* Debug */,
+				3E54B6984DD8336D3D3ADBF5C0BF3D4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF2D67ACD81D15EE08AC802A17D72364 /* Build configuration list for PBXNativeTarget "Pods-NavSets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BDEB208CBEB99B558E9F1FB27C4A658 /* Debug */,
+				8786DE4F5AF2BF7468179176AAC4AF65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_NavSetsUITests {
+  umbrella header "Pods-NavSetsUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
