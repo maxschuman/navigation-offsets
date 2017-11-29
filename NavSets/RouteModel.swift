@@ -7,6 +7,7 @@
 //
 
 import Mapbox
+import MapboxDirections
 
 class RouteModel{
     //MARK: Properties
@@ -14,6 +15,7 @@ class RouteModel{
     var startName: String?
     var destinationLocation: CLLocationCoordinate2D?
     var destinationName: String?
+    var transitMode: MBDirectionsProfileIdentifier?
     // var Route - the route object. Add in when mapbox navigation is all hooked up and ready to go
     
     //MARK: Initialization
@@ -23,13 +25,15 @@ class RouteModel{
         self.startName = nil
         self.destinationLocation = nil
         self.destinationName = nil
+        self.transitMode = nil
     }
-    init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String){
+    init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String, transitMode: MBDirectionsProfileIdentifier?){
         
         //Initialize stored properties
         self.startLocation = startLocation
         self.startName = startName
         self.destinationLocation = destinationLocation
         self.destinationName = destinationName
+        self.transitMode = transitMode
     }
 }

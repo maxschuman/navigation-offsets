@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for locations" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZD-DA-FID">
-                                <rect key="frame" x="20" y="40" width="335" height="30"/>
+                                <rect key="frame" x="20" y="5" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="no" textContentType="location"/>
@@ -27,28 +28,27 @@
                                     <segue destination="dhc-mZ-B8u" kind="presentation" identifier="LocationSelected" id="ttO-mp-O33"/>
                                 </connections>
                             </textField>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OD5-Wl-fn3">
-                                <rect key="frame" x="0.0" y="70" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ig-6X-Oht">
-                                <rect key="frame" x="0.0" y="126" width="375" height="541"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ig-6X-Oht">
+                                <rect key="frame" x="16" y="35" width="343" height="632"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="632" id="Xpt-r1-GJ9"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fZD-DA-FID" secondAttribute="trailing" constant="20" id="L9u-OY-ZXr"/>
-                            <constraint firstItem="fZD-DA-FID" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dLw-ia-aZg"/>
-                            <constraint firstItem="fZD-DA-FID" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="jNj-t0-F7h"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2BC-FW-gzk"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6Of-Hk-fsX"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="JWi-uF-jqk"/>
+                            <constraint firstItem="fZD-DA-FID" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ur9-Jh-8eZ"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="centerX" secondItem="fZD-DA-FID" secondAttribute="centerX" id="gCX-pq-r1x"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="top" secondItem="fZD-DA-FID" secondAttribute="bottom" id="oxO-13-UmU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Miu-cj-V0g"/>
                     <connections>
-                        <outlet property="locationSearchBar" destination="OD5-Wl-fn3" id="0dV-Xc-wLK"/>
                         <outlet property="locationSearchTextField" destination="fZD-DA-FID" id="tJ3-MC-cAC"/>
                         <outlet property="resultsTable" destination="2Ig-6X-Oht" id="nWt-Yy-2fQ"/>
                     </connections>
@@ -66,10 +66,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpf-b3-2Xt">
-                                <rect key="frame" x="0.0" y="20" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="liB-P6-1db">
-                                        <rect key="frame" x="20" y="20" width="335" height="68"/>
+                                        <rect key="frame" x="20" y="30" width="335" height="68"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tyr-Qj-ojf">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="68"/>
@@ -96,6 +96,9 @@
                                                 <state key="normal" title="Switch">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="switchButton:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="zGz-k1-SSs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -104,33 +107,42 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Mox-Re-oG3">
-                                        <rect key="frame" x="20" y="100" width="335" height="30"/>
+                                        <rect key="frame" x="20" y="110" width="335" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1W8-49-03f">
                                                 <rect key="frame" x="0.0" y="0.0" width="90.5" height="30"/>
                                                 <state key="normal" title="Car">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="selectedTransit:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="PNN-wL-J3I"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-1r-Okf">
                                                 <rect key="frame" x="122.5" y="0.0" width="90" height="30"/>
                                                 <state key="normal" title="Bike">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="selectedTransit:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="5Mf-hn-dOK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzB-of-hMC">
                                                 <rect key="frame" x="244.5" y="0.0" width="90.5" height="30"/>
                                                 <state key="normal" title="Walk">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="selectedTransit:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="S1Z-Pg-RDW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="liB-P6-1db" firstAttribute="top" secondItem="xpf-b3-2Xt" secondAttribute="top" constant="20" id="6J1-pg-U4y"/>
-                                    <constraint firstAttribute="bottom" secondItem="Mox-Re-oG3" secondAttribute="bottom" constant="20" id="7hO-Ts-66t"/>
+                                    <constraint firstItem="liB-P6-1db" firstAttribute="top" secondItem="xpf-b3-2Xt" secondAttribute="top" constant="30" id="6J1-pg-U4y"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mox-Re-oG3" secondAttribute="bottom" constant="10" id="7hO-Ts-66t"/>
                                     <constraint firstItem="liB-P6-1db" firstAttribute="leading" secondItem="xpf-b3-2Xt" secondAttribute="leading" constant="20" id="VKG-4o-c0S"/>
                                     <constraint firstAttribute="height" constant="150" id="Wkl-ZG-jsS"/>
                                     <constraint firstAttribute="trailing" secondItem="liB-P6-1db" secondAttribute="trailing" constant="20" id="r5U-nM-iEO"/>
@@ -141,14 +153,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H31-9M-StG">
                                 <rect key="frame" x="0.0" y="492" width="375" height="175"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination (XX minutes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzI-zA-SVe">
-                                        <rect key="frame" x="20" y="20" width="335" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="yja-Cs-SLd">
-                                        <rect key="frame" x="20" y="69.5" width="335" height="76"/>
+                                        <rect key="frame" x="20" y="70" width="335" height="76"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="qwa-QE-msO">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="30"/>
@@ -188,6 +194,12 @@
                                             <constraint firstItem="I3P-49-F25" firstAttribute="leading" secondItem="yja-Cs-SLd" secondAttribute="leading" id="uXN-Ha-4ZC"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination (XX minutes)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UzI-zA-SVe">
+                                        <rect key="frame" x="20" y="20" width="335" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -205,7 +217,7 @@
                         <constraints>
                             <constraint firstItem="IYO-mn-RWX" firstAttribute="trailing" secondItem="H31-9M-StG" secondAttribute="trailing" id="Ipa-Pk-PFN"/>
                             <constraint firstItem="H31-9M-StG" firstAttribute="leading" secondItem="IYO-mn-RWX" secondAttribute="leading" id="ZKf-EA-8wa"/>
-                            <constraint firstItem="xpf-b3-2Xt" firstAttribute="top" secondItem="IYO-mn-RWX" secondAttribute="top" id="oCd-vo-ZaT"/>
+                            <constraint firstItem="xpf-b3-2Xt" firstAttribute="top" secondItem="IYO-mn-RWX" secondAttribute="top" constant="-20" id="oCd-vo-ZaT"/>
                             <constraint firstItem="IYO-mn-RWX" firstAttribute="trailing" secondItem="xpf-b3-2Xt" secondAttribute="trailing" id="unQ-VI-1dW"/>
                             <constraint firstItem="xpf-b3-2Xt" firstAttribute="leading" secondItem="IYO-mn-RWX" secondAttribute="leading" id="vJs-Af-mXl"/>
                             <constraint firstItem="IYO-mn-RWX" firstAttribute="bottom" secondItem="H31-9M-StG" secondAttribute="bottom" id="z0w-wh-7TR"/>
@@ -214,9 +226,14 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Xo3-jQ-Vs5" id="B26-eP-8Gq"/>
+                        <outlet property="bikeButton" destination="XSy-1r-Okf" id="pg1-5f-VlU"/>
+                        <outlet property="carButton" destination="1W8-49-03f" id="zhr-3n-dK7"/>
                         <outlet property="destinationField" destination="TjJ-7V-LcZ" id="4gQ-xa-ZfV"/>
                         <outlet property="originField" destination="46i-Nm-QXY" id="ptV-B9-7Q8"/>
+                        <outlet property="routeDistanceAndTime" destination="UzI-zA-SVe" id="N5k-9r-cB0"/>
                         <outlet property="startButton" destination="hOM-Xa-3md" id="6GM-ua-8ts"/>
+                        <outlet property="switchButton" destination="A1o-vW-vfQ" id="VxP-5O-clC"/>
+                        <outlet property="walkButton" destination="HzB-of-hMC" id="kBK-hc-2gb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NoZ-4C-KVX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,7 +19,11 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var originField: UITextField!
     @IBOutlet weak var startButton: UIButton!
-    
+    @IBOutlet weak var routeDistanceAndTime: UILabel!
+    @IBOutlet weak var carButton: UIButton!
+    @IBOutlet weak var switchButton: UIButton!
+    @IBOutlet weak var walkButton: UIButton!
+    @IBOutlet weak var bikeButton: UIButton!
     var mapView: MGLMapView!
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
@@ -31,7 +35,9 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
 
         // Add map view to base view
         let url = URL(string: "mapbox://styles/mapbox/streets-v10")
-        mapView = MGLMapView(frame: view.bounds, styleURL: url)
+        // top view comes down 150, bottom view goes up 175
+        let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - 175)
+        mapView = MGLMapView(frame: mapFrame, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setCenter(CLLocationCoordinate2D(latitude: 42.0493, longitude:-87.6819), zoomLevel: 11, animated: false)
         view.addSubview(mapView)
@@ -44,6 +50,10 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
         // Set the map view's delegate
         mapView.delegate = self
         
+        // Make car the default mode of transit
+        routeModel?.transitMode = .automobileAvoidingTraffic
+        carButton?.isSelected = true
+        
         originField.text = "Current Location"
         if let destinationName = routeModel?.destinationName {
              destinationField.text = destinationName
@@ -54,7 +64,7 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
             annotation.coordinate = destinationLocation
             mapView.addAnnotation(annotation)
             // Calculate the route and put it on the map
-            calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!) { [unowned self] (route, error) in
+            calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
                 if error != nil {
                     // print an error message
                     print ("Error calculating route")
@@ -70,12 +80,21 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
     
     
     // Calculate route to use for navigation
-    func calculateRoute(from origin: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> ()) {
+    func calculateRoute(from origin: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D, transitMode profileID: MBDirectionsProfileIdentifier? = .automobileAvoidingTraffic, completion: @escaping (Route?, Error?) -> ()) {
 
         let originWaypoint = Waypoint(coordinate: origin, name: "Start")
         let destinationWaypoint = Waypoint(coordinate: destination, name: "Finish")
-        let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: .automobileAvoidingTraffic)
+        let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: profileID)
         options.includesAlternativeRoutes = true
+        
+        // clear the previous annotations
+        if (mapView.annotations != nil) {
+            mapView.removeAnnotations(mapView.annotations!)
+        }
+        // re-add the destination coordinate annotation
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = destination
+        mapView.addAnnotation(annotation)
 
         _ = Directions.shared.calculate(options) { (waypoints, routes, error) in
             guard error == nil else {
@@ -88,8 +107,12 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
             for route in reversed! {
                 self.directionsRoute = route
                 self.drawRoute(route: self.directionsRoute!, isMainRoute: route == routes?.first)
+                let dist = (self.directionsRoute?.distance)! / 1609.34
+                let time = Int((self.directionsRoute?.expectedTravelTime)! / 60)
+                self.routeDistanceAndTime.text = ("\(String(time)) mins" + " (\(String(format: "%.1f", dist)) miles)")
             }
         }
+
     }
     
     func drawRoute(route: Route, isMainRoute: Bool) {
@@ -102,7 +125,7 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
             polyline.color = #colorLiteral(red: 0.1897518039, green: 0.3010634184, blue: 0.7994888425, alpha: 1)
             polyline.width = 5.0
         }
-        self.mapView.addAnnotation(polyline)
+        mapView.addAnnotation(polyline)
     }
     
     func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
@@ -167,6 +190,34 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
         
     }
     
+    @IBAction func selectedTransit(_ sender:UIButton)
+    {
+        let transitButtons = [carButton, bikeButton, walkButton, nil];
+        for button in transitButtons {
+            if (button == sender) {
+                button?.isSelected = true
+                routeModel?.transitMode = MBDirectionsProfileIdentifier.automobileAvoidingTraffic
+                if (button == bikeButton) {
+                    routeModel?.transitMode = MBDirectionsProfileIdentifier.cycling
+                }
+                else if (button == walkButton){
+                    routeModel?.transitMode = MBDirectionsProfileIdentifier.walking
+                }
+                calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
+                    if error != nil {
+                        // print an error message
+                        print ("Error calculating route")
+                    }
+                }
+            }
+            else {
+                button?.isSelected = false
+            }
+        }
+    }
+    
+    @IBAction func switchButton(_ sender: UIButton) {
+    }
     //MARK: Actions
     
 }

@@ -18,7 +18,6 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     //MARK: Properties
     @IBOutlet weak var locationSearchTextField: UITextField!
     @IBOutlet weak var resultsTable: UITableView!
-    @IBOutlet weak var locationSearchBar: UISearchBar!
     var mapView: MGLMapView!
     var routeModel: RouteModel?
     var geocoder: Geocoder!
@@ -32,7 +31,7 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         
         // set self as delegate for text field
         locationSearchTextField.delegate = self
-        locationSearchBar.delegate = self
+        // hide the results table
         resultsTable.isHidden = true
         
         // Add map view to base view
