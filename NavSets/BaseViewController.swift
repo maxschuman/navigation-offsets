@@ -12,15 +12,17 @@ import MapboxCoreNavigation
 import MapboxNavigation
 import MapboxDirections
 import MapboxGeocoder
-import GooglePlaces
 
 
-class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, GMSAutocompleteResultsViewControllerDelegate {
+class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UISearchBarDelegate {
     //MARK: Properties
     @IBOutlet weak var locationSearchTextField: UITextField!
-    
-    
+    @IBOutlet weak var resultsTable: UITableView!
+    @IBOutlet weak var locationSearchBar: UISearchBar!
+    var mapView: MGLMapView!
     var routeModel: RouteModel?
+    var geocoder: Geocoder!
+    var geocodingDataTask: URLSessionDataTask?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,28 +32,28 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         
         // set self as delegate for text field
         locationSearchTextField.delegate = self
+        locationSearchBar.delegate = self
+        resultsTable.isHidden = true
         
         // Add map view to base view
         let url = URL(string: "mapbox://styles/mapbox/streets-v10")
-        let mapView = MGLMapView(frame: view.bounds, styleURL: url)
+        mapView = MGLMapView(frame: view.bounds, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 59.31, longitude: 18.06), zoomLevel: 9, animated: false)
+        mapView.setCenter(CLLocationCoordinate2D(latitude: 42.0493, longitude:-87.6819), zoomLevel: 11, animated: false)
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView) // send the map view to the back, behind the other added UI elements
         
-        resultsViewController = GMSAutocompleteResultsViewController()
-        resultsViewController?.delegate = self
-        searchController = UISearchController(searchResultsController: resultsViewController)
-        searchController?.searchResultsUpdater = resultsViewController
-        navigationItem.titleView = searchController?.searchBar
-//        let destSearch = UIView(frame: CGRect(x: 0, y: 20.0, width: 350.0, height: 45.0))
-//        destSearch.addSubview((searchController?.searchBar)!)
-//        view.addSubview(destSearch)
-        searchController?.searchBar.sizeToFit()
-        // when UISearchController presents the results view, present it in this view controller
-        definesPresentationContext = true
-        // prevent the nav bar from being hidden when searching
-        searchController?.hidesNavigationBarDuringPresentation = false
+        // Allow the map view to show the user's location
+        mapView.showsUserLocation = true
+        
+        // Set the map view's delegate
+        mapView.delegate = self
+        
+        let setDestinationLP = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(_:)))
+        mapView.addGestureRecognizer(setDestinationLP)
+        
+        // Add the geocoder
+        geocoder = Geocoder.shared
         
     }
     
@@ -60,35 +62,39 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didAutocompleteWith place: GMSPlace) {
+    @objc func didLongPress(_ sender: UILongPressGestureRecognizer){
+        guard sender.state == .began else { return }
+        // clear the previous annotations
         if (mapView.annotations != nil) {
             mapView.removeAnnotations(mapView.annotations!)
         }
-        searchController?.isActive = false
-        // Do something with the selected place.
-        print("Place name: \(place.name)")
-        print("Place address: \(String(describing: place.formattedAddress))")
-        print("Place attributions: \(String(describing: place.attributions))")
-        print("Place coordinate: \(String(describing: place.coordinate))")
         
+        // Converts a point where user did a long press to map coordinates
+        let point = sender.location(in: mapView)
+        let coordinate = mapView.convert(point, toCoordinateFrom: mapView)
         
+        // Create a basic point annotation and add it to the map
         let annotation = MGLPointAnnotation()
-        annotation.coordinate = place.coordinate
-        annotation.title = "Start navigation"
+        annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
+        self.routeModel!.destinationLocation = coordinate
+        self.routeModel!.startLocation = mapView.userLocation?.coordinate
         
-//        calculateRoute(from: (mapView.userLocation!.coordinate), to: annotation.coordinate) { [unowned self] (route, error) in
-//            if error != nil {
-//                // print an error message
-//                print ("Error calculating route")
-//            }
+        geocodingDataTask?.cancel()
+        let options = ReverseGeocodeOptions(coordinate: coordinate)
+        geocodingDataTask = geocoder.geocode(options) { [unowned self] (placemarks, attribution, error) in
+            if let error = error {
+                NSLog("%@", error)
+            } else if let placemarks = placemarks, !placemarks.isEmpty {
+                self.locationSearchTextField.text = placemarks[0].qualifiedName
+                // Segue to other view... probably should change the segue so you don't have to pass it the locationSearchTextField even when that's not what sent it
+                self.performSegue(withIdentifier: "LocationSelected", sender: self.locationSearchTextField)
+            } else {
+                self.locationSearchTextField.text = "No results"
+            }
         }
-        
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didFailAutocompleteWithError error: Error) {
-        // handle the error
-        print("Error: ", error.localizedDescription)
     }
-
+    
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide keyboard
@@ -166,4 +172,3 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     }
 
 }
-
