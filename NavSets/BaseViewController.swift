@@ -14,7 +14,7 @@ import MapboxDirections
 import MapboxGeocoder
 
 
-class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UISearchBarDelegate {
+class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
     //MARK: Properties
     @IBOutlet weak var locationSearchTextField: UITextField!
     @IBOutlet weak var resultsTable: UITableView!
@@ -22,6 +22,7 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     var routeModel: RouteModel?
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
+    var forwardGeocodeResults: Array<GeocodedPlacemark>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,10 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         
         // set self as delegate for text field
         locationSearchTextField.delegate = self
-        // hide the results table
+        locationSearchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        // set up the results table
+        resultsTable.delegate = self
+        resultsTable.dataSource = self
         resultsTable.isHidden = true
         
         // Add map view to base view
@@ -86,8 +90,8 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
                 NSLog("%@", error)
             } else if let placemarks = placemarks, !placemarks.isEmpty {
                 self.locationSearchTextField.text = placemarks[0].qualifiedName
-                // Segue to other view... probably should change the segue so you don't have to pass it the locationSearchTextField even when that's not what sent it
-                self.performSegue(withIdentifier: "LocationSelected", sender: self.locationSearchTextField)
+                // Segue to other view
+                self.performSegue(withIdentifier: "LocationSelected", sender: self.mapView)
             } else {
                 self.locationSearchTextField.text = "No results"
             }
@@ -107,16 +111,64 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        resultsTable.isHidden = false
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        geocodingDataTask?.cancel()
+        let options = ForwardGeocodeOptions(query: locationSearchTextField.text!)
+        options.focalLocation = CLLocation(latitude: (mapView.userLocation?.coordinate.latitude)!, longitude: (mapView.userLocation?.coordinate.longitude)!)
+        options.maximumResultCount = 10
+        geocodingDataTask = geocoder.geocode(options) { [unowned self] (placemarks, attribution, error) in
+            if let error = error {
+                NSLog("%@", error)
+            } else if let placemarks = placemarks, !placemarks.isEmpty {
+                self.forwardGeocodeResults = placemarks
+                DispatchQueue.main.async{
+                    self.resultsTable.reloadData()
+                }
+            } else {
+                print ("No results")
+            }
+        }
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
 //        routeModel!.destinationName = textField.text
-        return
+        resultsTable.isHidden = true
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return forwardGeocodeResults?.count ?? 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "forwardGeocodeResult", for: indexPath)
+        cell.textLabel?.text = forwardGeocodeResults?[indexPath.item].qualifiedName
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let placemark = forwardGeocodeResults?[indexPath.item]
+        // Create a basic point annotation and add it to the map
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = (placemark?.location.coordinate)!
+        mapView.addAnnotation(annotation)
+        // Update the route model and set the text in the search field
+        self.routeModel!.destinationLocation = (placemark?.location.coordinate)!
+        self.routeModel!.startLocation = mapView.userLocation?.coordinate
+        self.locationSearchTextField.text = placemark?.qualifiedName
+        // Segue to other view
+        self.performSegue(withIdentifier: "LocationSelected", sender: self.resultsTable)
+//        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+    }
+    
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
-        
         
         // perform appropriate setup for destination controller
         let id = segue.identifier
@@ -126,20 +178,16 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
             guard let destination = destinationController as? SelectorViewController else {
                 fatalError("Invalid destination controller: \(segue.destination)")
             }
-            
-            guard let textField = sender as? UITextField else {
-                fatalError("Invalid sender: \(sender)")
-            }
-            
+//            guard let textField = sender as? UITextField else {
+//                fatalError("Invalid sender: \(String(describing: sender))")
+//            }
             // update route model object for passing to selector view
-            if let destinationName = textField.text{
+            if let destinationName = locationSearchTextField.text{
                 self.routeModel!.destinationName = destinationName
-                
                 destination.routeModel = self.routeModel
             }
         default:
             fatalError("Did not recognize identifier: \(segue.identifier ?? "")")
-            
         }
     }
     
@@ -149,10 +197,6 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
             // set route model to be the model from the previous view
             self.routeModel = routeModel
             updateRouteModel()
-            
-
-
-            
         }
     }
     

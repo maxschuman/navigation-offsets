@@ -29,21 +29,35 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ig-6X-Oht">
-                                <rect key="frame" x="16" y="35" width="343" height="632"/>
+                                <rect key="frame" x="16" y="35" width="343" height="500"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="632" id="Xpt-r1-GJ9"/>
+                                    <constraint firstAttribute="height" constant="500" id="GVb-s6-0Na"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="forwardGeocodeResult" id="5v1-MQ-IBs">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5v1-MQ-IBs" id="alE-nR-6BN">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="X5M-8h-tuv"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="lWD-er-12P"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="2BC-FW-gzk"/>
-                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="6Of-Hk-fsX"/>
-                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="JWi-uF-jqk"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4f0-8j-8Gy"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="top" secondItem="fZD-DA-FID" secondAttribute="bottom" id="6Zy-sK-mdU"/>
                             <constraint firstItem="fZD-DA-FID" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ur9-Jh-8eZ"/>
-                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="centerX" secondItem="fZD-DA-FID" secondAttribute="centerX" id="gCX-pq-r1x"/>
-                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="top" secondItem="fZD-DA-FID" secondAttribute="bottom" id="oxO-13-UmU"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ihb-8Y-GDG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Ig-6X-Oht" secondAttribute="bottom" constant="132" id="kzG-sN-bxW"/>
+                            <constraint firstItem="2Ig-6X-Oht" firstAttribute="centerX" secondItem="fZD-DA-FID" secondAttribute="centerX" id="vnE-9I-u6m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
