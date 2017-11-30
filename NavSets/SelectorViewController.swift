@@ -27,7 +27,10 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
     var mapView: MGLMapView!
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
+    
     var routeModel: RouteModel?
+    var userModel: UserModel?
+    
     var directionsRoute: Route?
     
     override func viewDidLoad() {
