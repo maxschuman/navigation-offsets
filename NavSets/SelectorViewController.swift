@@ -13,7 +13,7 @@ import MapboxNavigation
 import MapboxDirections
 import MapboxGeocoder
 
-class SelectorViewController: UIViewController, MGLMapViewDelegate {
+class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
     //MARK: Properties
     @IBOutlet weak var destinationField: UITextField!
     @IBOutlet weak var backButton: UIButton!
@@ -24,11 +24,15 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var bikeButton: UIButton!
+    @IBOutlet weak var originGeocodeResultsTable: UITableView!
+    @IBOutlet weak var destinationGeocodeResultsTable: UITableView!
     var mapView: MGLMapView!
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
     var routeModel: RouteModel?
     var directionsRoute: Route?
+    var originForwardGeocodeResults: Array<GeocodedPlacemark>?
+    var destinationForwardGeocodeResults: Array<GeocodedPlacemark>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,13 +40,29 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
         // Add map view to base view
         let url = URL(string: "mapbox://styles/mapbox/streets-v10")
         // top view comes down 150, bottom view goes up 175
-        let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - 175)
+        let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - (150+175))
         mapView = MGLMapView(frame: mapFrame, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setCenter(CLLocationCoordinate2D(latitude: 42.0493, longitude:-87.6819), zoomLevel: 11, animated: false)
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView) // send the map view to the back, behind the other added UI elements
         
+        // set self as delegate for text fields
+        destinationField.delegate = self
+        originField.delegate = self
+        destinationField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        originField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        // set up the results tables
+        destinationGeocodeResultsTable.delegate = self
+        destinationGeocodeResultsTable.dataSource = self
+        destinationGeocodeResultsTable.isHidden = true
+        originGeocodeResultsTable.delegate = self
+        originGeocodeResultsTable.dataSource = self
+        originGeocodeResultsTable.isHidden = true
+        
+//        let destinationResultsTableFrame = CGRect(x: 20, y: destinationField.bounds.minY, width: 250, height: 230)
+//        destinationGeocodeResultsTable.frame = destinationResultsTableFrame
+//        destinationGeocodeResultsTable.frame.y = destinationField.bounds.minY
         // Add the geocoder
         geocoder = Geocoder.shared
         // Allow the map view to show the user's location
@@ -54,6 +74,7 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
         routeModel?.transitMode = .automobileAvoidingTraffic
         carButton?.isSelected = true
         
+        // Set the origin field text to current location by default (and hide table because it shows on text update)
         originField.text = "Current Location"
         if let destinationName = routeModel?.destinationName {
              destinationField.text = destinationName
@@ -166,6 +187,138 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
         
         let viewController = NavigationViewController(for: route, locationManager: SimulatedLocationManager(route:route))
         self.present(viewController, animated: true, completion: nil)
+    }
+    
+    
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide keyboard
+        textField.resignFirstResponder()
+        
+        // Clear view
+//        clearRouteModel()
+    
+        //        // Perform segue to selector view
+        //        performSegue(withIdentifier: "LocationSelected", sender: textField)
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+        if (textField == destinationField) {
+            destinationGeocodeResultsTable.isHidden = false
+            view.bringSubview(toFront: destinationGeocodeResultsTable)
+        }
+        else if (textField == originField) {
+            originGeocodeResultsTable.isHidden = false
+            view.bringSubview(toFront: originGeocodeResultsTable)
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        geocodingDataTask?.cancel()
+        let options = ForwardGeocodeOptions(query: textField.text!)
+        options.focalLocation = CLLocation(latitude: (mapView.userLocation?.coordinate.latitude)!, longitude: (mapView.userLocation?.coordinate.longitude)!)
+        options.maximumResultCount = 10
+        geocodingDataTask = geocoder.geocode(options) { [unowned self] (placemarks, attribution, error) in
+            if let error = error {
+                NSLog("%@", error)
+            } else if let placemarks = placemarks, !placemarks.isEmpty {
+                if (textField == self.destinationField) {
+                    self.destinationForwardGeocodeResults = placemarks
+                    DispatchQueue.main.async{
+                        self.destinationGeocodeResultsTable.reloadData()
+                    }
+                }
+                else if (textField == self.originField) {
+                    self.originForwardGeocodeResults = placemarks
+                    DispatchQueue.main.async{
+                        self.originGeocodeResultsTable.reloadData()
+                    }
+                }
+            } else {
+                print ("No results")
+            }
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        //        routeModel!.destinationName = textField.text
+        if (textField == destinationField) {
+            destinationGeocodeResultsTable.isHidden = true
+        }
+        else if (textField == originField) {
+            originGeocodeResultsTable.isHidden = true
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (tableView == originGeocodeResultsTable) {
+            return originForwardGeocodeResults?.count ?? 10
+        }
+        else if (tableView == destinationGeocodeResultsTable) {
+            return destinationForwardGeocodeResults?.count ?? 10
+        }
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "forwardGeocodeResult", for: indexPath)
+        if (tableView == originGeocodeResultsTable) {
+            cell.textLabel?.text = originForwardGeocodeResults?[indexPath.item].qualifiedName
+        }
+        else if (tableView == destinationGeocodeResultsTable) {
+            cell.textLabel?.text = destinationForwardGeocodeResults?[indexPath.item].qualifiedName
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        var shouldCalculateRoute = true
+        // we are updating the origin information
+        if (tableView == originGeocodeResultsTable) {
+            let placemark = originForwardGeocodeResults?[indexPath.item]
+            // make sure an actual location cell was selected
+            if (placemark != nil){
+                // Update the route model and set the text in the search field
+                self.routeModel!.startLocation = (placemark?.location.coordinate)!
+                self.originField.text = placemark?.qualifiedName
+                self.originField.endEditing(true)
+            }
+            else {
+                shouldCalculateRoute = false
+            }
+        }
+        // we are updating the destination information
+        else if (tableView == destinationGeocodeResultsTable) {
+            let placemark = destinationForwardGeocodeResults?[indexPath.item]
+            // make sure an actual location cell was selected
+            if (placemark != nil){
+                // Create a basic point annotation and add it to the map
+                let annotation = MGLPointAnnotation()
+                annotation.coordinate = (placemark?.location.coordinate)!
+                mapView.addAnnotation(annotation)
+                // Update the route model and set the text in the search field
+                self.routeModel!.destinationLocation = (placemark?.location.coordinate)!
+                self.destinationField.text = placemark?.qualifiedName
+                self.destinationField.endEditing(true)
+            }
+            else {
+                shouldCalculateRoute = false
+            }
+        }
+        if (shouldCalculateRoute) {
+            // hide the table
+            tableView.isHidden = true
+            // recalculate and redraw the route
+            calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
+                if error != nil {
+                    // print an error message
+                    print ("Error calculating route")
+                }
+            }
+        }
     }
 
     // MARK: Navigation

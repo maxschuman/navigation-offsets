@@ -27,6 +27,18 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        // this should be inside of some button or something that lets you edit your car preferences
+        defaults.set("Make Value", forKey: carMakeAndModel.carMake)
+        defaults.set("Model Value", forKey: carMakeAndModel.carModel)
+        if let stringOne = defaults.string(forKey: carMakeAndModel.carMake) {
+            print(stringOne) // Some String Value
+        }
+        if let stringTwo = defaults.string(forKey: carMakeAndModel.carModel) {
+            print(stringTwo) // Another String Value
+        }
+
+        
         // initialize route model with default arguments
         self.routeModel = RouteModel()
         
@@ -112,6 +124,7 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
         resultsTable.isHidden = false
     }
     
@@ -152,17 +165,18 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let placemark = forwardGeocodeResults?[indexPath.item]
-        // Create a basic point annotation and add it to the map
-        let annotation = MGLPointAnnotation()
-        annotation.coordinate = (placemark?.location.coordinate)!
-        mapView.addAnnotation(annotation)
-        // Update the route model and set the text in the search field
-        self.routeModel!.destinationLocation = (placemark?.location.coordinate)!
-        self.routeModel!.startLocation = mapView.userLocation?.coordinate
-        self.locationSearchTextField.text = placemark?.qualifiedName
-        // Segue to other view
-        self.performSegue(withIdentifier: "LocationSelected", sender: self.resultsTable)
-//        tableView.deselectRow(at: indexPath as IndexPath, animated: true)
+            // make sure an actual location cell was selected
+            if (placemark != nil){
+            // Create a basic point annotation and add it to the map
+            let annotation = MGLPointAnnotation()
+            annotation.coordinate = (placemark?.location.coordinate)!
+            mapView.addAnnotation(annotation)        // Update the route model and set the text in the search field
+            self.routeModel!.destinationLocation = (placemark?.location.coordinate)!
+            self.routeModel!.startLocation = mapView.userLocation?.coordinate
+            self.locationSearchTextField.text = placemark?.qualifiedName
+            // Segue to other view
+            self.performSegue(withIdentifier: "LocationSelected", sender: self.resultsTable)
+        }
     }
     
     

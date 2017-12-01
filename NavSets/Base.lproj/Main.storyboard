@@ -79,6 +79,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W0e-PP-Vrh" userLabel="Destination Geocode Results Table">
+                                <rect key="frame" x="20" y="97" width="250" height="218"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="forwardGeocodeResult" id="i7P-hh-RvH">
+                                        <rect key="frame" x="0.0" y="28" width="250" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i7P-hh-RvH" id="MGq-Gt-qOU">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dhc-mZ-B8u" id="0El-aP-gOn"/>
+                                    <outlet property="delegate" destination="dhc-mZ-B8u" id="HsK-ar-cLO"/>
+                                </connections>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpf-b3-2Xt">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
                                 <subviews>
@@ -226,6 +245,25 @@
                                     <constraint firstAttribute="trailing" secondItem="UzI-zA-SVe" secondAttribute="trailing" constant="20" id="rAN-kG-97m"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fPj-xW-inM">
+                                <rect key="frame" x="20" y="59" width="250" height="230"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="forwardGeocodeResult" id="pKF-g9-2PP">
+                                        <rect key="frame" x="0.0" y="28" width="250" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pKF-g9-2PP" id="uz6-Ev-fPg">
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dhc-mZ-B8u" id="khK-m1-qAs"/>
+                                    <outlet property="delegate" destination="dhc-mZ-B8u" id="2mu-Ix-vlE"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -243,7 +281,9 @@
                         <outlet property="bikeButton" destination="XSy-1r-Okf" id="pg1-5f-VlU"/>
                         <outlet property="carButton" destination="1W8-49-03f" id="zhr-3n-dK7"/>
                         <outlet property="destinationField" destination="TjJ-7V-LcZ" id="4gQ-xa-ZfV"/>
+                        <outlet property="destinationGeocodeResultsTable" destination="W0e-PP-Vrh" id="qI2-w2-NqA"/>
                         <outlet property="originField" destination="46i-Nm-QXY" id="ptV-B9-7Q8"/>
+                        <outlet property="originGeocodeResultsTable" destination="fPj-xW-inM" id="Oo3-I9-Ntb"/>
                         <outlet property="routeDistanceAndTime" destination="UzI-zA-SVe" id="N5k-9r-cB0"/>
                         <outlet property="startButton" destination="hOM-Xa-3md" id="6GM-ua-8ts"/>
                         <outlet property="switchButton" destination="A1o-vW-vfQ" id="VxP-5O-clC"/>

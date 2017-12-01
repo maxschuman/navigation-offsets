@@ -18,6 +18,7 @@
 		4377BD751FCD067D00E4FFA5 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4377BD731FCD067D00E4FFA5 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4377BD791FCD165600E4FFA5 /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4377BD781FCD165600E4FFA5 /* SelectorViewController.swift */; };
 		43CC9C101FCDE6B800E82B16 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */; };
+		9E1361B51FCF9B480053CC4A /* OffsetCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1361B41FCF9B480053CC4A /* OffsetCalculations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		4377BD731FCD067D00E4FFA5 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		4377BD781FCD165600E4FFA5 /* SelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
 		43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		9E1361B41FCF9B480053CC4A /* OffsetCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetCalculations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				4377BD4E1FCD05C800E4FFA5 /* LaunchScreen.storyboard */,
 				4377BD511FCD05C800E4FFA5 /* Info.plist */,
 				43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */,
+				9E1361B41FCF9B480053CC4A /* OffsetCalculations.swift */,
 			);
 			path = NavSets;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E1361B51FCF9B480053CC4A /* OffsetCalculations.swift in Sources */,
 				4377BD481FCD05C800E4FFA5 /* BaseViewController.swift in Sources */,
 				43CC9C101FCDE6B800E82B16 /* RouteModel.swift in Sources */,
 				4377BD791FCD165600E4FFA5 /* SelectorViewController.swift in Sources */,
