@@ -19,7 +19,10 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     @IBOutlet weak var locationSearchTextField: UITextField!
     @IBOutlet weak var resultsTable: UITableView!
     var mapView: MGLMapView!
+    
     var routeModel: RouteModel?
+    var userModel: UserModel?
+    
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
     var forwardGeocodeResults: Array<GeocodedPlacemark>?
@@ -30,6 +33,10 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         
         // initialize route model with default arguments
         self.routeModel = RouteModel()
+        
+        // initialize user model with default arguments
+        // TODO: persist user model data throughout application uses
+        self.userModel = UserModel()
         
         // set self as delegate for text field
         locationSearchTextField.delegate = self
@@ -58,6 +65,9 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         
         // Add the geocoder
         geocoder = Geocoder.shared
+        
+        // Preload global data to speed up future use
+        let shared = VehicleData.sharedInstance
         
     }
     
@@ -205,6 +215,20 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
             if let destinationName = locationSearchTextField.text{
                 self.routeModel!.destinationName = destinationName
                 destination.routeModel = self.routeModel
+                destination.userModel = self.userModel
+            }
+        case "Settings":
+            guard let destination = destinationController.childViewControllers.first as? SettingsViewController else {
+                fatalError("Invalid destination controller: \(segue.destination)")
+            }
+            
+            // update route model object for passing to selector view
+            if let user = self.userModel{
+                destination.userModel = user
+            }
+            else{
+                self.userModel = UserModel()
+                destination.userModel = self.userModel
             }
         default:
             fatalError("Did not recognize identifier: \(segue.identifier ?? "")")
@@ -217,6 +241,10 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
             // set route model to be the model from the previous view
             self.routeModel = routeModel
             updateRouteModel()
+        }
+        if let sourceViewController = sender.source as? SettingsViewController, let user = sourceViewController.userModel {
+            // set user model to be the model from the previous view
+            self.userModel = user
         }
     }
     

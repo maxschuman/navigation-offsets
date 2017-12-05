@@ -31,7 +31,10 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     var mapView: MGLMapView!
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
+    
     var routeModel: RouteModel?
+    var userModel: UserModel?
+    
     var directionsRoute: Route?
     var originForwardGeocodeResults: Array<GeocodedPlacemark>?
     var destinationForwardGeocodeResults: Array<GeocodedPlacemark>?
@@ -93,7 +96,11 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                     // print an error message
                     print ("Error calculating route")
                 }
+                
             }
+            
+            
+            
         }
         // add the launch uber button and make it hidden
         //TODO: fix the button's location
@@ -150,6 +157,12 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 let dist = (self.directionsRoute?.distance)! / 1609.34
                 let time = Int((self.directionsRoute?.expectedTravelTime)! / 60)
                 self.routeDistanceAndTime.text = ("\(String(time)) mins" + " (\(String(format: "%.1f", dist)) miles)")
+            }
+            
+            if let route = self.directionsRoute{
+                let cost = self.userModel!.offsetCost(route: route)
+                let buttonString = String(format: "Buy Route - $%.2f", cost)
+                self.startButton.setTitle(buttonString, for: .normal)
             }
         }
         
