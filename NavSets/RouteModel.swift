@@ -27,7 +27,7 @@ class RouteModel{
         self.destinationName = nil
         self.transitMode = nil
     }
-    init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String, transitMode: MBDirectionsProfileIdentifier?){
+    init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String, transitMode: MBDirectionsProfileIdentifier?, userLocation: CLLocationCoordinate2D){
         
         //Initialize stored properties
         self.startLocation = startLocation

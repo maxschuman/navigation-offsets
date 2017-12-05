@@ -3,11 +3,11 @@
   "iOS" : [
     {
       "name" : "MapboxCoreNavigation",
-      "hash" : "3c01911ec351ccc6eb883c0f3ff4d34534c76bd7df54a83336baca0d7165ff9f"
+      "hash" : "54277cd00d16b4b70c10ec1542054a2547e46d96fd2fd7cb670a65df1b1ae338"
     },
     {
       "name" : "MapboxNavigation",
-      "hash" : "bced00d3b5a0be899bc5c39eb1c2e6f4d4252d1c92b3d3855409e3474db1f3ae"
+      "hash" : "603ec10d9569f2ea6408f1f5f99740ce3b422eff027edc8f4e0c71c086ee0962"
     }
   ]
 }

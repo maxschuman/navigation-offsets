@@ -45,5 +45,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>UberClientID</key>
+    <string>B7un98TqDvYXOa8HyNJfDsJlKKK38iJX</string>
+    <key>UberDisplayName</key>
+    <string>NavSets</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>uber</string>
+        <string>uberauth</string>
+    </array>
 </dict>
 </plist>

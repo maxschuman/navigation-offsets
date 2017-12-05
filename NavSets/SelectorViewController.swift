@@ -12,6 +12,7 @@ import MapboxCoreNavigation
 import MapboxNavigation
 import MapboxDirections
 import MapboxGeocoder
+import UberRides
 
 class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
     //MARK: Properties
@@ -24,6 +25,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var walkButton: UIButton!
     @IBOutlet weak var bikeButton: UIButton!
+    @IBOutlet weak var uberButton: UIButton!
     @IBOutlet weak var originGeocodeResultsTable: UITableView!
     @IBOutlet weak var destinationGeocodeResultsTable: UITableView!
     var mapView: MGLMapView!
@@ -33,6 +35,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     var directionsRoute: Route?
     var originForwardGeocodeResults: Array<GeocodedPlacemark>?
     var destinationForwardGeocodeResults: Array<GeocodedPlacemark>?
+    var launchUberButton = RideRequestButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +46,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - (150+175))
         mapView = MGLMapView(frame: mapFrame, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 42.0493, longitude:-87.6819), zoomLevel: 11, animated: false)
+        mapView.setCenter((routeModel?.startLocation)!, zoomLevel: 11, animated: false)
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView) // send the map view to the back, behind the other added UI elements
         
@@ -92,6 +95,12 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 }
             }
         }
+        // add the launch uber button and make it hidden
+        //TODO: fix the button's location
+//        launchUberButton.center = startButton.center
+        launchUberButton.frame = startButton.frame
+        view.addSubview(launchUberButton)
+        launchUberButton.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,10 +121,20 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         if (mapView.annotations != nil) {
             mapView.removeAnnotations(mapView.annotations!)
         }
-        // re-add the destination coordinate annotation
-        let annotation = MGLPointAnnotation()
-        annotation.coordinate = destination
-        mapView.addAnnotation(annotation)
+        // If the destination point is different than the user's current location, add an annotation
+        if ((destination.latitude != mapView.userLocation?.coordinate.latitude) || (destination.longitude != mapView.userLocation?.coordinate.longitude)) {
+            let destinationAnnotation = MGLPointAnnotation()
+            destinationAnnotation.coordinate = destination
+            mapView.addAnnotation(destinationAnnotation)
+        }
+
+        // If the origin point is different than the user's current location and is not -180,-180 (which happens when the location hasn't been found yet), add an annotation
+        let nullUserLocation = (mapView.userLocation?.coordinate.latitude == -180) && (mapView.userLocation?.coordinate.longitude == -180)
+        if (!nullUserLocation && ((origin.latitude != mapView.userLocation?.coordinate.latitude) || (origin.longitude != mapView.userLocation?.coordinate.longitude)))  {
+            let originAnnotation = MGLPointAnnotation()
+            originAnnotation.coordinate = origin
+            mapView.addAnnotation(originAnnotation)
+        }
 
         _ = Directions.shared.calculate(options) { (waypoints, routes, error) in
             guard error == nil else {
@@ -133,7 +152,13 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 self.routeDistanceAndTime.text = ("\(String(time)) mins" + " (\(String(format: "%.1f", dist)) miles)")
             }
         }
-
+        
+        // Update the uber route parameters
+        let dropoffLocation = CLLocation(latitude: destination.latitude, longitude: destination.longitude)
+        let builder = RideParametersBuilder()
+        builder.dropoffLocation = dropoffLocation
+        builder.dropoffNickname = routeModel?.destinationName
+        launchUberButton.rideParameters = builder.build()
     }
     
     func drawRoute(route: Route, isMainRoute: Bool) {
@@ -194,12 +219,6 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide keyboard
         textField.resignFirstResponder()
-        
-        // Clear view
-//        clearRouteModel()
-    
-        //        // Perform segue to selector view
-        //        performSegue(withIdentifier: "LocationSelected", sender: textField)
         return true
     }
     
@@ -295,10 +314,6 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
             let placemark = destinationForwardGeocodeResults?[indexPath.item]
             // make sure an actual location cell was selected
             if (placemark != nil){
-                // Create a basic point annotation and add it to the map
-                let annotation = MGLPointAnnotation()
-                annotation.coordinate = (placemark?.location.coordinate)!
-                mapView.addAnnotation(annotation)
                 // Update the route model and set the text in the search field
                 self.routeModel!.destinationLocation = (placemark?.location.coordinate)!
                 self.destinationField.text = placemark?.qualifiedName
@@ -345,9 +360,10 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     
     @IBAction func selectedTransit(_ sender:UIButton)
     {
-        let transitButtons = [carButton, bikeButton, walkButton, nil];
+        let transitButtons = [carButton, bikeButton, walkButton, uberButton, nil];
         for button in transitButtons {
             if (button == sender) {
+                launchUberButton.isHidden = true
                 button?.isSelected = true
                 routeModel?.transitMode = MBDirectionsProfileIdentifier.automobileAvoidingTraffic
                 if (button == bikeButton) {
@@ -355,6 +371,9 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 }
                 else if (button == walkButton){
                     routeModel?.transitMode = MBDirectionsProfileIdentifier.walking
+                }
+                else if (button == uberButton){
+                    launchUberButton.isHidden = false
                 }
                 calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
                     if error != nil {
@@ -370,9 +389,28 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     }
     
     @IBAction func switchButton(_ sender: UIButton) {
+        // Swap the start and destination locations and names
+        let tempLocation = routeModel?.startLocation
+        let tempName = routeModel?.startName
+        routeModel?.startLocation = routeModel?.destinationLocation
+        routeModel?.startName = routeModel?.destinationName
+        routeModel?.destinationLocation = tempLocation
+        routeModel?.destinationName = tempName
+        // Swap the origin and destination field text entries
+        let tempText = originField.text
+        originField.text = destinationField.text
+        destinationField.text = tempText
+        calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
+            if error != nil {
+                // print an error message
+                print ("Error calculating route")
+            }
+        }
     }
     //MARK: Actions
     
+    @IBAction func offsetButton(_ sender: Any) {
+    }
 }
 
 // MGLPolyline subclass

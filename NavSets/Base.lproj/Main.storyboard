@@ -143,7 +143,7 @@
                                         <rect key="frame" x="20" y="110" width="335" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1W8-49-03f">
-                                                <rect key="frame" x="0.0" y="0.0" width="90.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
                                                 <state key="normal" title="Car">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -152,7 +152,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-1r-Okf">
-                                                <rect key="frame" x="122.5" y="0.0" width="90" height="30"/>
+                                                <rect key="frame" x="92" y="0.0" width="59.5" height="30"/>
                                                 <state key="normal" title="Bike">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -161,12 +161,21 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzB-of-hMC">
-                                                <rect key="frame" x="244.5" y="0.0" width="90.5" height="30"/>
+                                                <rect key="frame" x="183.5" y="0.0" width="60" height="30"/>
                                                 <state key="normal" title="Walk">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="selectedTransit:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="S1Z-Pg-RDW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPm-Zm-3mO">
+                                                <rect key="frame" x="275.5" y="0.0" width="59.5" height="30"/>
+                                                <state key="normal" title="Uber">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectedTransit:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="PVk-gi-gif"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -218,6 +227,9 @@
                                                 <state key="normal" title="Pay Offset - $X.XX">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="offsetButton:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="ukh-MH-ofi"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -287,6 +299,7 @@
                         <outlet property="routeDistanceAndTime" destination="UzI-zA-SVe" id="N5k-9r-cB0"/>
                         <outlet property="startButton" destination="hOM-Xa-3md" id="6GM-ua-8ts"/>
                         <outlet property="switchButton" destination="A1o-vW-vfQ" id="VxP-5O-clC"/>
+                        <outlet property="uberButton" destination="aPm-Zm-3mO" id="6je-FT-015"/>
                         <outlet property="walkButton" destination="HzB-of-hMC" id="kBK-hc-2gb"/>
                     </connections>
                 </viewController>

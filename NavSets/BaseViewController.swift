@@ -77,6 +77,18 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
+//    // TODO: this isn't working (try to stop editing when map is touched)
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+////        locationSearchTextField.endEditing(true)
+//        locationSearchTextField.resignFirstResponder()
+//        super.touchesBegan(touches, with: event)
+//    }
+//
+    
+    func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
+        mapView.setCenter((mapView.userLocation?.coordinate)!, zoomLevel: 11, animated: false)
+    }
+    
     @objc func didLongPress(_ sender: UILongPressGestureRecognizer){
         guard sender.state == .began else { return }
         // clear the previous annotations
@@ -125,24 +137,29 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
-        resultsTable.isHidden = false
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        geocodingDataTask?.cancel()
-        let options = ForwardGeocodeOptions(query: locationSearchTextField.text!)
-        options.focalLocation = CLLocation(latitude: (mapView.userLocation?.coordinate.latitude)!, longitude: (mapView.userLocation?.coordinate.longitude)!)
-        options.maximumResultCount = 10
-        geocodingDataTask = geocoder.geocode(options) { [unowned self] (placemarks, attribution, error) in
-            if let error = error {
-                NSLog("%@", error)
-            } else if let placemarks = placemarks, !placemarks.isEmpty {
-                self.forwardGeocodeResults = placemarks
-                DispatchQueue.main.async{
-                    self.resultsTable.reloadData()
+        if (textField.text?.isEmpty)!{
+            resultsTable.isHidden = true
+        }
+        else {
+            resultsTable.isHidden = false
+            geocodingDataTask?.cancel()
+            let options = ForwardGeocodeOptions(query: locationSearchTextField.text!)
+            options.focalLocation = CLLocation(latitude: (mapView.userLocation?.coordinate.latitude)!, longitude: (mapView.userLocation?.coordinate.longitude)!)
+            options.maximumResultCount = 10
+            geocodingDataTask = geocoder.geocode(options) { [unowned self] (placemarks, attribution, error) in
+                if let error = error {
+                    NSLog("%@", error)
+                } else if let placemarks = placemarks, !placemarks.isEmpty {
+                    self.forwardGeocodeResults = placemarks
+                    DispatchQueue.main.async{
+                        self.resultsTable.reloadData()
+                    }
+                } else {
+                    print ("No results")
                 }
-            } else {
-                print ("No results")
             }
         }
     }
@@ -218,6 +235,14 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     private func updateRouteModel(){
         self.locationSearchTextField.text = routeModel?.destinationName
         // We can add code here that drops the pin on the map for the chosen location, sets the search bar to the location name, and centers the map on the chosen location
+        // clear the previous annotations
+        if (mapView.annotations != nil) {
+            mapView.removeAnnotations(mapView.annotations!)
+        }
+        // Add an annotation for the destination
+        let annotation = MGLPointAnnotation()
+        annotation.coordinate = (routeModel?.destinationLocation)!
+        mapView.addAnnotation(annotation)
     }
     
     private func clearRouteModel(){

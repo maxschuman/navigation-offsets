@@ -1,0 +1,38 @@
+BCSymbolMap Version: 2.0
++[AWSMobileClient sharedInstance]
+___33+[AWSMobileClient sharedInstance]_block_invoke
+-[AWSMobileClient interceptApplication:openURL:sourceApplication:annotation:]
+-[AWSMobileClient interceptApplication:didFinishLaunchingWithOptions:]
+___70-[AWSMobileClient interceptApplication:didFinishLaunchingWithOptions:]_block_invoke
+-[AWSMobileClient interceptApplication:didFinishLaunchingWithOptions:resumeSessionWithCompletionHandler:]
+-[AWSMobileClient setSignInProviders:]
+-[AWSMobileClient registerConfigSignInProviders]
+-[AWSMobileClient registerSignInProvider:providerConfigurationKey:]
+-[AWSMobileClient registerUserSignInProviders:]
+-[AWSMobileClient isConfigurationKeyPresent:]
+-[AWSMobileClient getPermissionsFromConfig:]
+-[AWSMobileClient getCredentialsProvider]
+-[AWSMobileClient setCredentialsProvider:]
+-[AWSMobileClient credentialsProvider]
+-[AWSMobileClient isInitialized]
+-[AWSMobileClient setIsInitialized:]
+-[AWSMobileClient signInProviderConfig]
+-[AWSMobileClient setSignInProviderConfig:]
+-[AWSMobileClient .cxx_destruct]
+_sharedInstance._sharedMobileClient
+_sharedInstance.onceToken
+___block_descriptor_tmp
+___block_literal_global
+___block_descriptor_tmp.40
+___block_literal_global.41
+_OBJC_IVAR_$_AWSMobileClient._isInitialized
+_OBJC_IVAR_$_AWSMobileClient._credentialsProvider
+_OBJC_IVAR_$_AWSMobileClient._signInProviderConfig
+Apple LLVM version 9.0.0 (clang-900.0.38)
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSMobileClient/AWSMobileClient.m
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK
+__70-[AWSMobileClient interceptApplication:didFinishLaunchingWithOptions:]_block_invoke
+__33+[AWSMobileClient sharedInstance]_block_invoke
+_dispatch_once
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.1.sdk/usr/include/dispatch/once.h
+/Users/adamgreenstein/Library/Caches/org.carthage.CarthageKit/DerivedData/9.1_9B55/aws-sdk-ios/2.6.7/Build/Intermediates.noindex/ArchiveIntermediates/AWSMobileClient/IntermediateBuildFilesPath/AWSAuthSDK.build/Release-iphoneos/AWSMobileClient.build/DerivedSources/AWSMobileClient_vers.c

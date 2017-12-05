@@ -1,0 +1,89 @@
+BCSymbolMap Version: 2.0
++[AWSIdentityManager defaultIdentityManager]
+___44+[AWSIdentityManager defaultIdentityManager]_block_invoke
+-[AWSIdentityManager initWithCredentialProvider:]
+-[AWSIdentityManager authState]
+-[AWSIdentityManager logins]
+___28-[AWSIdentityManager logins]_block_invoke
+-[AWSIdentityManager identityId]
+-[AWSIdentityManager credentialsProvider]
+-[AWSIdentityManager setCredentialsProvider:]
+-[AWSIdentityManager .cxx_destruct]
+_defaultIdentityManager._defaultIdentityManager
+_defaultIdentityManager.onceToken
+___block_descriptor_tmp
+___block_literal_global
+___block_descriptor_tmp.46
+___block_literal_global.47
+_OBJC_IVAR_$_AWSIdentityManager._credentialsProvider
+l_OBJC_PROTOCOL_$_NSObject
+l_OBJC_LABEL_PROTOCOL_$_NSObject
+l_OBJC_PROTOCOL_$_AWSIdentityProviderManager
+l_OBJC_LABEL_PROTOCOL_$_AWSIdentityProviderManager
+Apple LLVM version 9.0.0 (clang-900.0.38)
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthCore/AWSIdentityManager.m
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthCore/AWSIdentityManager.h
+__28-[AWSIdentityManager logins]_block_invoke
+__44+[AWSIdentityManager defaultIdentityManager]_block_invoke
+_dispatch_once
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.1.sdk/usr/include/dispatch/once.h
++[AWSSignInManager sharedInstance]
+___34+[AWSSignInManager sharedInstance]_block_invoke
+-[AWSSignInManager registerAWSSignInProvider:]
+-[AWSSignInManager signInProviderForKey:]
+-[AWSSignInManager getRegisteredSignInProviders]
+-[AWSSignInManager isLoggedIn]
+-[AWSSignInManager wipeAll]
+-[AWSSignInManager logoutWithCompletionHandler:]
+___48-[AWSSignInManager logoutWithCompletionHandler:]_block_invoke
+___48-[AWSSignInManager logoutWithCompletionHandler:]_block_invoke_2
+___copy_helper_block_
+___destroy_helper_block_
+___copy_helper_block_.38
+___destroy_helper_block_.39
+-[AWSSignInManager loginWithSignInProviderKey:completionHandler:]
+-[AWSSignInManager resumeSessionWithCompletionHandler:]
+-[AWSSignInManager completeLogin]
+___33-[AWSSignInManager completeLogin]_block_invoke
+___33-[AWSSignInManager completeLogin]_block_invoke_2
+___copy_helper_block_.74
+___destroy_helper_block_.75
+___copy_helper_block_.77
+___destroy_helper_block_.78
+-[AWSSignInManager interceptApplication:didFinishLaunchingWithOptions:]
+-[AWSSignInManager interceptApplication:openURL:sourceApplication:annotation:]
+-[AWSSignInManager delegate]
+-[AWSSignInManager setDelegate:]
+-[AWSSignInManager completionHandler]
+-[AWSSignInManager setCompletionHandler:]
+-[AWSSignInManager currentSignInProvider]
+-[AWSSignInManager setCurrentSignInProvider:]
+-[AWSSignInManager potentialSignInProvider]
+-[AWSSignInManager setPotentialSignInProvider:]
+-[AWSSignInManager .cxx_destruct]
+_signInProviderInfo
+_sharedInstance._sharedSignInManager
+_sharedInstance.onceToken
+_identityManager
+___block_descriptor_tmp.37
+___block_descriptor_tmp.41
+___block_descriptor_tmp.76
+___block_descriptor_tmp.79
+l_OBJC_PROTOCOL_$_AWSSignInProviderApplicationIntercept
+l_OBJC_LABEL_PROTOCOL_$_AWSSignInProviderApplicationIntercept
+l_OBJC_PROTOCOL_REFERENCE_$_AWSSignInProviderApplicationIntercept
+_OBJC_IVAR_$_AWSSignInManager._delegate
+_OBJC_IVAR_$_AWSSignInManager._completionHandler
+_OBJC_IVAR_$_AWSSignInManager._currentSignInProvider
+_OBJC_IVAR_$_AWSSignInManager._potentialSignInProvider
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthCore/AWSSignInManager.m
+/Users/adamgreenstein/Documents/Classes/Fall 2017/EECS 497 - Spatial Computing/FinalProject/navigation-offsets/Carthage/Checkouts/aws-sdk-ios/AWSAuthSDK/Sources/AWSAuthCore/AWSSignInManager.h
+__destroy_helper_block_
+__copy_helper_block_
+__33-[AWSSignInManager completeLogin]_block_invoke_2
+__33-[AWSSignInManager completeLogin]_block_invoke
+__48-[AWSSignInManager logoutWithCompletionHandler:]_block_invoke_2
+__48-[AWSSignInManager logoutWithCompletionHandler:]_block_invoke
+__34+[AWSSignInManager sharedInstance]_block_invoke
+/Users/adamgreenstein/Library/Caches/org.carthage.CarthageKit/DerivedData/9.1_9B55/aws-sdk-ios/2.6.7/Build/Intermediates.noindex/ArchiveIntermediates/AWSAuthCore/IntermediateBuildFilesPath/AWSAuthSDK.build/Release-iphoneos/AWSAuthCore.build/DerivedSources/AWSAuthCore_vers.c
