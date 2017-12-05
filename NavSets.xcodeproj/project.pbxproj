@@ -19,7 +19,6 @@
 		4377BD751FCD067D00E4FFA5 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4377BD731FCD067D00E4FFA5 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4377BD791FCD165600E4FFA5 /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4377BD781FCD165600E4FFA5 /* SelectorViewController.swift */; };
 		43CC9C101FCDE6B800E82B16 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */; };
-		9E1361B51FCF9B480053CC4A /* OffsetCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1361B41FCF9B480053CC4A /* OffsetCalculations.swift */; };
 		B5A4334D00F870CD07D840F3 /* Pods_NavSetsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3BBCF30C46C746DFEF3091 /* Pods_NavSetsUITests.framework */; };
 		BACFF4E8E6D762B499E4DE83 /* Pods_NavSetsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEF6975A77E9CE9D604FD3F /* Pods_NavSetsTests.framework */; };
 /* End PBXBuildFile section */
@@ -79,7 +78,6 @@
 		43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		95C7312F1C2B0E1C39CE30EF /* Pods-NavSetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavSetsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavSetsUITests/Pods-NavSetsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9AEF6975A77E9CE9D604FD3F /* Pods_NavSetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NavSetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E1361B41FCF9B480053CC4A /* OffsetCalculations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetCalculations.swift; sourceTree = "<group>"; };
 		9E8ADB881FD70E2800D3FD61 /* NavSets-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NavSets-Bridging-Header.h"; sourceTree = "<group>"; };
 		B673BB8D546907B040525CD0 /* Pods-NavSets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavSets.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavSets/Pods-NavSets.release.xcconfig"; sourceTree = "<group>"; };
 		F76140C800D0D3142297DEA4 /* Pods-NavSetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavSetsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavSetsUITests/Pods-NavSetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				4377BD4E1FCD05C800E4FFA5 /* LaunchScreen.storyboard */,
 				4377BD511FCD05C800E4FFA5 /* Info.plist */,
 				43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */,
-				9E1361B41FCF9B480053CC4A /* OffsetCalculations.swift */,
 			);
 			path = NavSets;
 			sourceTree = "<group>";
@@ -552,7 +549,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E1361B51FCF9B480053CC4A /* OffsetCalculations.swift in Sources */,
 				4377BD481FCD05C800E4FFA5 /* BaseViewController.swift in Sources */,
 				43CC9C101FCDE6B800E82B16 /* RouteModel.swift in Sources */,
 				4377BD791FCD165600E4FFA5 /* SelectorViewController.swift in Sources */,

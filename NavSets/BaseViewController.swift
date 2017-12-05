@@ -26,17 +26,6 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let defaults = UserDefaults.standard
-        // this should be inside of some button or something that lets you edit your car preferences
-        defaults.set("Make Value", forKey: carMakeAndModel.carMake)
-        defaults.set("Model Value", forKey: carMakeAndModel.carModel)
-        if let stringOne = defaults.string(forKey: carMakeAndModel.carMake) {
-            print(stringOne) // Some String Value
-        }
-        if let stringTwo = defaults.string(forKey: carMakeAndModel.carModel) {
-            print(stringTwo) // Another String Value
-        }
 
         
         // initialize route model with default arguments
