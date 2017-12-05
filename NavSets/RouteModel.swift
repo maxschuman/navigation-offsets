@@ -16,7 +16,6 @@ class RouteModel{
     var destinationLocation: CLLocationCoordinate2D?
     var destinationName: String?
     var transitMode: MBDirectionsProfileIdentifier?
-    // var Route - the route object. Add in when mapbox navigation is all hooked up and ready to go
     
     //MARK: Initialization
     init() {
@@ -27,7 +26,7 @@ class RouteModel{
         self.destinationName = nil
         self.transitMode = nil
     }
-    init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String, transitMode: MBDirectionsProfileIdentifier?){
+    init?(startLocation: CLLocationCoordinate2D, startName: String?, destinationLocation: CLLocationCoordinate2D, destinationName: String, transitMode: MBDirectionsProfileIdentifier?, route: Route){
         
         //Initialize stored properties
         self.startLocation = startLocation

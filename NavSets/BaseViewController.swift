@@ -65,6 +65,9 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         // Add the geocoder
         geocoder = Geocoder.shared
         
+        // Preload global data to speed up future use
+        let shared = VehicleData.sharedInstance
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -194,6 +197,19 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
                 destination.routeModel = self.routeModel
                 destination.userModel = self.userModel
             }
+        case "Settings":
+            guard let destination = destinationController.childViewControllers.first as? SettingsViewController else {
+                fatalError("Invalid destination controller: \(segue.destination)")
+            }
+            
+            // update route model object for passing to selector view
+            if let user = self.userModel{
+                destination.userModel = user
+            }
+            else{
+                self.userModel = UserModel()
+                destination.userModel = self.userModel
+            }
         default:
             fatalError("Did not recognize identifier: \(segue.identifier ?? "")")
         }
@@ -205,6 +221,10 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
             // set route model to be the model from the previous view
             self.routeModel = routeModel
             updateRouteModel()
+        }
+        if let sourceViewController = sender.source as? SettingsViewController, let user = sourceViewController.userModel {
+            // set user model to be the model from the previous view
+            self.userModel = user
         }
     }
     

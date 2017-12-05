@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4369C1B71FD09A270029CD28 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369C1B61FD09A270029CD28 /* UserModel.swift */; };
+		4369C1B91FD0A7700029CD28 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4369C1B81FD0A7700029CD28 /* SettingsViewController.swift */; };
 		4377BD461FCD05C800E4FFA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4377BD451FCD05C800E4FFA5 /* AppDelegate.swift */; };
 		4377BD481FCD05C800E4FFA5 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4377BD471FCD05C800E4FFA5 /* BaseViewController.swift */; };
 		4377BD4B1FCD05C800E4FFA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4377BD491FCD05C800E4FFA5 /* Main.storyboard */; };
@@ -17,7 +19,9 @@
 		4377BD741FCD067D00E4FFA5 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4377BD731FCD067D00E4FFA5 /* Mapbox.framework */; };
 		4377BD751FCD067D00E4FFA5 /* Mapbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4377BD731FCD067D00E4FFA5 /* Mapbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4377BD791FCD165600E4FFA5 /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4377BD781FCD165600E4FFA5 /* SelectorViewController.swift */; };
+		4388B1FB1FD6FFE000DEC2DB /* vehicle_data.csv in Resources */ = {isa = PBXBuildFile; fileRef = 4388B1FA1FD6FFE000DEC2DB /* vehicle_data.csv */; };
 		43CC9C101FCDE6B800E82B16 /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */; };
+		43F8A1201FD45D8300C4D460 /* VehicleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F8A11F1FD45D8300C4D460 /* VehicleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,8 @@
 		2E13000DC45E71BA5DA6517F /* Pods-NavSetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavSetsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NavSetsTests/Pods-NavSetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3436B1A70B7621FF4530CBEF /* Pods-NavSets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavSets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NavSets/Pods-NavSets.debug.xcconfig"; sourceTree = "<group>"; };
 		3D3BBCF30C46C746DFEF3091 /* Pods_NavSetsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NavSetsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4369C1B61FD09A270029CD28 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4369C1B81FD0A7700029CD28 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4377BD421FCD05C800E4FFA5 /* NavSets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NavSets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4377BD451FCD05C800E4FFA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4377BD471FCD05C800E4FFA5 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +76,9 @@
 		4377BD671FCD05C800E4FFA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4377BD731FCD067D00E4FFA5 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
 		4377BD781FCD165600E4FFA5 /* SelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorViewController.swift; sourceTree = "<group>"; };
+		4388B1FA1FD6FFE000DEC2DB /* vehicle_data.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vehicle_data.csv; sourceTree = "<group>"; };
 		43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
+		43F8A11F1FD45D8300C4D460 /* VehicleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,7 @@
 		4377BD391FCD05C800E4FFA5 = {
 			isa = PBXGroup;
 			children = (
+				4388B1FA1FD6FFE000DEC2DB /* vehicle_data.csv */,
 				4377BD731FCD067D00E4FFA5 /* Mapbox.framework */,
 				4377BD441FCD05C800E4FFA5 /* NavSets */,
 				4377BD591FCD05C800E4FFA5 /* NavSetsTests */,
@@ -133,6 +142,9 @@
 				4377BD4E1FCD05C800E4FFA5 /* LaunchScreen.storyboard */,
 				4377BD511FCD05C800E4FFA5 /* Info.plist */,
 				43CC9C0F1FCDE6B800E82B16 /* RouteModel.swift */,
+				4369C1B61FD09A270029CD28 /* UserModel.swift */,
+				4369C1B81FD0A7700029CD28 /* SettingsViewController.swift */,
+				43F8A11F1FD45D8300C4D460 /* VehicleData.swift */,
 			);
 			path = NavSets;
 			sourceTree = "<group>";
@@ -294,6 +306,7 @@
 				4377BD501FCD05C800E4FFA5 /* LaunchScreen.storyboard in Resources */,
 				4377BD4D1FCD05C800E4FFA5 /* Assets.xcassets in Resources */,
 				4377BD4B1FCD05C800E4FFA5 /* Main.storyboard in Resources */,
+				4388B1FB1FD6FFE000DEC2DB /* vehicle_data.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,7 +538,10 @@
 				4377BD481FCD05C800E4FFA5 /* BaseViewController.swift in Sources */,
 				43CC9C101FCDE6B800E82B16 /* RouteModel.swift in Sources */,
 				4377BD791FCD165600E4FFA5 /* SelectorViewController.swift in Sources */,
+				4369C1B71FD09A270029CD28 /* UserModel.swift in Sources */,
 				4377BD461FCD05C800E4FFA5 /* AppDelegate.swift in Sources */,
+				43F8A1201FD45D8300C4D460 /* VehicleData.swift in Sources */,
+				4369C1B91FD0A7700029CD28 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -72,7 +72,11 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
                     // print an error message
                     print ("Error calculating route")
                 }
+                
             }
+            
+            
+            
         }
     }
 
@@ -113,6 +117,12 @@ class SelectorViewController: UIViewController, MGLMapViewDelegate {
                 let dist = (self.directionsRoute?.distance)! / 1609.34
                 let time = Int((self.directionsRoute?.expectedTravelTime)! / 60)
                 self.routeDistanceAndTime.text = ("\(String(time)) mins" + " (\(String(format: "%.1f", dist)) miles)")
+            }
+            
+            if let route = self.directionsRoute{
+                let cost = self.userModel!.offsetCost(route: route)
+                let buttonString = String(format: "Buy Route - $%.2f", cost)
+                self.startButton.setTitle(buttonString, for: .normal)
             }
         }
 
