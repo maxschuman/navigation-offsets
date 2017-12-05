@@ -45,8 +45,8 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
 
         // Add map view to base view
         let url = URL(string: "mapbox://styles/mapbox/streets-v10")
-        // top view comes down 150, bottom view goes up 175
-        let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - (150+175))
+        // top view comes down 150, bottom view goes up 125
+        let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - (150+125))
         mapView = MGLMapView(frame: mapFrame, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setCenter((routeModel?.startLocation)!, zoomLevel: 11, animated: false)
@@ -422,8 +422,6 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     }
     //MARK: Actions
     
-    @IBAction func offsetButton(_ sender: Any) {
-    }
 }
 
 // MGLPolyline subclass

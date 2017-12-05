@@ -29,7 +29,6 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         // initialize route model with default arguments
         self.routeModel = RouteModel()

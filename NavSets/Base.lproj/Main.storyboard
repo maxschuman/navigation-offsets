@@ -330,15 +330,6 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3P-49-F25">
-                                                <rect key="frame" x="0.0" y="46" width="335" height="30"/>
-                                                <state key="normal" title="Pay Offset - $X.XX">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="offsetButton:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="ukh-MH-ofi"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="qwa-QE-msO" secondAttribute="trailing" id="cYb-ld-CKx"/>
