@@ -13,8 +13,9 @@ import MapboxNavigation
 import MapboxDirections
 import MapboxGeocoder
 import UberRides
+import Stripe
 
-class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UITableViewDataSource, UITableViewDelegate, STPPaymentContextDelegate {
     //MARK: Properties
     @IBOutlet weak var destinationField: UITextField!
     @IBOutlet weak var backButton: UIButton!
@@ -31,14 +32,39 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     var mapView: MGLMapView!
     var geocoder: Geocoder!
     var geocodingDataTask: URLSessionDataTask?
-    
     var routeModel: RouteModel?
     var userModel: UserModel?
-    
     var directionsRoute: Route?
     var originForwardGeocodeResults: Array<GeocodedPlacemark>?
     var destinationForwardGeocodeResults: Array<GeocodedPlacemark>?
     var launchUberButton = RideRequestButton()
+    var selectedTransitButton: UIButton!
+    let paymentContext: STPPaymentContext
+    let customerContext: STPCustomerContext
+    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    var paymentInProgress: Bool = false {
+        didSet {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                if self.paymentInProgress {
+                    self.activityIndicator.startAnimating()
+                    self.activityIndicator.alpha = 1
+                }
+                else {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.alpha = 0
+                }
+            }, completion: nil)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        customerContext = STPCustomerContext(keyProvider: MainAPIClient.sharedClient)
+        paymentContext = STPPaymentContext(customerContext: customerContext)
+        
+        super.init(coder: aDecoder)
+        paymentContext.delegate = self
+        paymentContext.hostViewController = self
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +105,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         // Make car the default mode of transit
         routeModel?.transitMode = .automobileAvoidingTraffic
         carButton?.isSelected = true
+        selectedTransitButton = carButton
         
         // Set the origin field text to current location by default (and hide table because it shows on text update)
         originField.text = "Current Location"
@@ -164,7 +191,15 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
             }
             
             if let route = self.directionsRoute{
-                let cost = self.userModel!.offsetCost(route: route)
+                var cost = 0.00
+                if (profileID == .automobile) || (profileID == .automobileAvoidingTraffic){
+                    cost = self.userModel!.offsetCost(route: route)
+                    var payment = Int(cost * 100)
+                    if (payment < 50 ){
+                        payment += 50
+                    }
+                    self.paymentContext.paymentAmount = payment
+                }
                 let buttonString = String(format: "Buy Route - $%.2f", cost)
                 self.startButton.setTitle(buttonString, for: .normal)
             }
@@ -388,7 +423,9 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     
     @IBAction func startNav(_ sender: UIButton) {
         if sender === startButton{
-            self.presentNavigation(along: directionsRoute!)
+//            self.presentNavigation(along: directionsRoute!)
+            self.paymentInProgress = true
+            paymentContext.requestPayment()
         }
         
     }
@@ -398,7 +435,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         let transitButtons = [carButton, bikeButton, walkButton, uberButton, nil];
         for button in transitButtons {
             if (button == sender) {
-                launchUberButton.isHidden = true
+                selectedTransitButton = button
                 button?.isSelected = true
                 routeModel?.transitMode = MBDirectionsProfileIdentifier.automobileAvoidingTraffic
                 if (button == bikeButton) {
@@ -406,9 +443,6 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 }
                 else if (button == walkButton){
                     routeModel?.transitMode = MBDirectionsProfileIdentifier.walking
-                }
-                else if (button == uberButton){
-                    launchUberButton.isHidden = false
                 }
                 calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
                     if error != nil {
@@ -457,6 +491,52 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         }
     }
     
+    // MARK: STPPaymentContextDelegate
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFailToLoadWithError error: Error) {
+        print("[ERROR]: Unrecognized error while loading payment context: \(error)");
+    }
+    
+    func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
+        print ("payment context changed")
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
+        // Create charge using payment result
+        MainAPIClient.sharedClient.completeCharge(paymentResult,
+                                                  amount: self.paymentContext.paymentAmount,
+                                                  currency: "usd",
+                                                  completion: completion)
+    }
+    
+    func paymentContext(_ paymentContext: STPPaymentContext, didFinishWith status: STPPaymentStatus, error: Error?) {
+        self.paymentInProgress = false
+        let title: String
+        let message: String
+        switch status {
+        case .error:
+            title = "Error"
+            message = error?.localizedDescription ?? ""
+            print ("payment failure")
+        case .success:
+            title = "Success"
+            message = "Route purchased"
+            print ("payment success")
+        case .userCancellation:
+            return
+        }
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        var action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        if (selectedTransitButton == carButton && status == .success){
+            action = UIAlertAction(title: "Start Navigation", style: .default, handler: {(action: UIAlertAction!) in self.presentNavigation(along: self.directionsRoute!)})
+        }
+        else if (selectedTransitButton == uberButton && status == .success){
+            action = UIAlertAction(title: "Launch Uber", style: .default, handler: {(action: UIAlertAction!) in self.launchUberButton.requestBehavior.requestRide(parameters: self.launchUberButton.rideParameters)})
+        }
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
 }
 
 // MGLPolyline subclass
