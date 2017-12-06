@@ -108,6 +108,10 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         launchUberButton.frame = startButton.frame
         view.addSubview(launchUberButton)
         launchUberButton.isHidden = true
+        
+        // add rounding to corners of buttons
+        self.startButton.layer.cornerRadius = 7
+        self.backButton.layer.cornerRadius = 7
     }
 
     override func didReceiveMemoryWarning() {
