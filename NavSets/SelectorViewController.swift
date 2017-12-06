@@ -486,10 +486,10 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         }
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         var action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        if (selectedTransitButton == carButton){
+        if (selectedTransitButton == carButton && status == .success){
             action = UIAlertAction(title: "Start Navigation", style: .default, handler: {(action: UIAlertAction!) in self.presentNavigation(along: self.directionsRoute!)})
         }
-        else if (selectedTransitButton == uberButton){
+        else if (selectedTransitButton == uberButton && status == .success){
             action = UIAlertAction(title: "Launch Uber", style: .default, handler: {(action: UIAlertAction!) in self.launchUberButton.requestBehavior.requestRide(parameters: self.launchUberButton.rideParameters)})
         }
         alertController.addAction(action)
