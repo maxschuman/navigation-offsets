@@ -189,6 +189,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 let time = Int((self.directionsRoute?.expectedTravelTime)! / 60)
                 self.routeDistanceAndTime.text = ("\(String(time)) mins" + " (\(String(format: "%.1f", dist)) miles)")
             }
+            var buttonString = "Start Directions"
             
             if let route = self.directionsRoute{
                 var cost = 0.00
@@ -199,9 +200,12 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                         payment += 50
                     }
                     self.paymentContext.paymentAmount = payment
+                    buttonString = String(format: "Buy Route - $%.2f", cost)
+                    
                 }
-                let buttonString = String(format: "Buy Route - $%.2f", cost)
+
                 self.startButton.setTitle(buttonString, for: .normal)
+                
             }
         }
         
