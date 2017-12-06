@@ -354,6 +354,24 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? ""){
+        case "Settings":
+            guard let destination = segue.destination.childViewControllers.first as? SettingsViewController else {
+                fatalError("Invalid destination controller: \(segue.destination)")
+            }
+            
+            // update user model object for passing to settings view
+            if let user = self.userModel{
+                destination.userModel = user
+            }
+            else{
+                self.userModel = UserModel()
+                destination.userModel = self.userModel
+            }
+        default:
+            var x = 0
+        }
     }
     
     
@@ -421,6 +439,19 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         }
     }
     //MARK: Actions
+    @IBAction func unwindToSelector(sender: UIStoryboardSegue){
+        if let sourceViewController = sender.source as? SettingsViewController, let user = sourceViewController.userModel {
+            // set user model to be the model from the previous view
+            self.userModel = user
+            
+            calculateRoute(from: (routeModel?.startLocation)!, to: (routeModel?.destinationLocation)!, transitMode: routeModel?.transitMode) { [unowned self] (route, error) in
+                if error != nil {
+                    // print an error message
+                    print ("Error calculating route")
+                }
+            }
+        }
+    }
     
 }
 

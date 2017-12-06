@@ -52,16 +52,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="lWD-er-12P"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PgY-ZX-EVZ">
-                                <rect key="frame" x="298" y="577" width="57" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6fb-Bf-SRU" kind="presentation" identifier="Settings" id="a1e-F6-6Lf"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -69,9 +59,7 @@
                             <constraint firstItem="2Ig-6X-Oht" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="4f0-8j-8Gy"/>
                             <constraint firstItem="2Ig-6X-Oht" firstAttribute="top" secondItem="fZD-DA-FID" secondAttribute="bottom" id="6Zy-sK-mdU"/>
                             <constraint firstItem="fZD-DA-FID" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Ur9-Jh-8eZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PgY-ZX-EVZ" secondAttribute="bottom" constant="60" id="dLl-Dh-pcq"/>
                             <constraint firstItem="2Ig-6X-Oht" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ihb-8Y-GDG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PgY-ZX-EVZ" secondAttribute="trailing" constant="20" id="u86-hA-jKK"/>
                             <constraint firstItem="2Ig-6X-Oht" firstAttribute="centerX" secondItem="fZD-DA-FID" secondAttribute="centerX" id="vnE-9I-u6m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -180,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxF-qE-YCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="807.20000000000005" y="877.51124437781118"/>
+            <point key="canvasLocation" x="1294" y="878"/>
         </scene>
         <!--Selector View Controller-->
         <scene sceneID="9mO-yi-p5D">
@@ -235,13 +223,22 @@
                                                     <constraint firstAttribute="width" constant="250" id="7Cc-t6-tpO"/>
                                                 </constraints>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1o-vW-vfQ">
-                                                <rect key="frame" x="258" y="21.5" width="77" height="25"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1o-vW-vfQ">
+                                                <rect key="frame" x="258" y="21.5" width="44" height="25"/>
                                                 <state key="normal" image="switch_arrows">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="switchButton:" destination="dhc-mZ-B8u" eventType="touchUpInside" id="zGz-k1-SSs"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v88-Qm-Nbc">
+                                                <rect key="frame" x="310" y="21.5" width="25" height="25"/>
+                                                <state key="normal" image="settings">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="6fb-Bf-SRU" kind="presentation" identifier="Settings" id="Brs-SZ-fcw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -439,6 +436,7 @@
         <image name="bike_unselected" width="25" height="25"/>
         <image name="car_selected" width="25" height="25"/>
         <image name="car_unselected" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
         <image name="switch_arrows" width="25" height="25"/>
         <image name="uber_selected" width="25" height="25"/>
         <image name="uber_unselected" width="25" height="25"/>
