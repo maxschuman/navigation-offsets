@@ -294,7 +294,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.054901960784313725" green="0.5490196078431373" blue="0.29761904761904762" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.054901960784313725" green="0.5490196078431373" blue="0.29803921568627451" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="liB-P6-1db" firstAttribute="top" secondItem="xpf-b3-2Xt" secondAttribute="top" constant="30" id="6J1-pg-U4y"/>
                                     <constraint firstAttribute="bottom" secondItem="Mox-Re-oG3" secondAttribute="bottom" constant="10" id="7hO-Ts-66t"/>

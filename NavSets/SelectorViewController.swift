@@ -106,6 +106,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         routeModel?.transitMode = .automobileAvoidingTraffic
         carButton?.isSelected = true
         selectedTransitButton = carButton
+        carButton.backgroundColor = UIColor.white
         
         // Set the origin field text to current location by default (and hide table because it shows on text update)
         originField.text = "Current Location"
@@ -139,6 +140,10 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         // add rounding to corners of buttons
         self.startButton.layer.cornerRadius = 7
         self.backButton.layer.cornerRadius = 7
+        self.carButton.layer.cornerRadius = 7
+        self.bikeButton.layer.cornerRadius = 7
+        self.walkButton.layer.cornerRadius = 7
+        self.uberButton.layer.cornerRadius = 7
     }
 
     override func didReceiveMemoryWarning() {
@@ -441,6 +446,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
             if (button == sender) {
                 selectedTransitButton = button
                 button?.isSelected = true
+                button?.backgroundColor = UIColor.white
                 routeModel?.transitMode = MBDirectionsProfileIdentifier.automobileAvoidingTraffic
                 if (button == bikeButton) {
                     routeModel?.transitMode = MBDirectionsProfileIdentifier.cycling
@@ -457,6 +463,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
             }
             else {
                 button?.isSelected = false
+                button?.backgroundColor = UIColor.clear
             }
         }
     }
