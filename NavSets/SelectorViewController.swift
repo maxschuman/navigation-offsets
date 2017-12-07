@@ -559,9 +559,9 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     private func saveUser(){
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.userModel, toFile: UserModel.ArchiveURL.path)
         if isSuccessfulSave {
-            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+            os_log("User successfully saved.", log: OSLog.default, type: .debug)
         } else {
-            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+            os_log("Failed to save user...", log: OSLog.default, type: .error)
         }
     }
     

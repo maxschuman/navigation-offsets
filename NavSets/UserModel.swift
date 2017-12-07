@@ -73,13 +73,14 @@ class UserModel: NSObject, NSCoding{
         aCoder.encode(carMake, forKey: PropertyKey.carMake)
         aCoder.encode(carModel, forKey: PropertyKey.carModel)
         aCoder.encode(carYear, forKey: PropertyKey.carYear)
+        aCoder.encode(CO2GramsPerMile, forKey: PropertyKey.CO2GramsPerMile)
     }
     
     required convenience init?(coder aDecoder: NSCoder){
         let carMake = aDecoder.decodeObject(forKey: PropertyKey.carMake) as? String
         let carModel = aDecoder.decodeObject(forKey: PropertyKey.carModel) as? String
         let carYear = aDecoder.decodeObject(forKey: PropertyKey.carYear) as? String
-        let emissions = aDecoder.decodeFloat(forKey: PropertyKey.carMake)
+        let emissions = aDecoder.decodeObject(forKey: PropertyKey.CO2GramsPerMile) as? Float
         
         self.init(carMake: carMake, carModel: carModel, carYear: carYear, gramsPerMile: emissions)
     }
