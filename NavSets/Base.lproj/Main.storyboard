@@ -32,10 +32,10 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Ig-6X-Oht">
-                                <rect key="frame" x="16" y="75" width="343" height="500"/>
+                                <rect key="frame" x="16" y="75" width="343" height="400"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="500" id="GVb-s6-0Na"/>
+                                    <constraint firstAttribute="height" constant="400" id="GVb-s6-0Na"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="forwardGeocodeResult" id="5v1-MQ-IBs">
@@ -156,6 +156,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Save" id="D4z-qL-22s">
                             <connections>
                                 <action selector="save:" destination="gzc-Tt-JVg" id="7T8-JE-e4i"/>
+                                <segue destination="ivv-ke-Y29" kind="unwind" unwindAction="unwindToSelectorWithSender:" id="idd-Uc-szP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -167,6 +168,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yxF-qE-YCk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ivv-ke-Y29" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1294" y="878"/>
         </scene>

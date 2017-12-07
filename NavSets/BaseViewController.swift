@@ -74,14 +74,7 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    // TODO: this isn't working (try to stop editing when map is touched)
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-////        locationSearchTextField.endEditing(true)
-//        locationSearchTextField.resignFirstResponder()
-//        super.touchesBegan(touches, with: event)
-//    }
-//
+
     
     func mapViewDidFinishLoadingMap(_ mapView: MGLMapView) {
         mapView.setCenter((mapView.userLocation?.coordinate)!, zoomLevel: 11, animated: false)
@@ -124,12 +117,8 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide keyboard
         textField.resignFirstResponder()
-        
         // Clear view
         clearRouteModel()
-        
-//        // Perform segue to selector view
-//        performSegue(withIdentifier: "LocationSelected", sender: textField)
         return true
     }
     
@@ -211,6 +200,12 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
 //                fatalError("Invalid sender: \(String(describing: sender))")
 //            }
             // update route model object for passing to selector view
+            // if the destination location hadn't been set yet, set it to the first geocoding result
+            if (self.routeModel?.destinationLocation?.latitude == nil){
+                self.routeModel?.destinationLocation = forwardGeocodeResults?.first?.location.coordinate
+                self.routeModel!.startLocation = mapView.userLocation?.coordinate
+                locationSearchTextField.text = forwardGeocodeResults?.first?.qualifiedName
+            }
             if let destinationName = locationSearchTextField.text{
                 self.routeModel!.destinationName = destinationName
                 destination.routeModel = self.routeModel
@@ -243,6 +238,8 @@ class BaseViewController: UIViewController, UITextFieldDelegate, MGLMapViewDeleg
         let annotation = MGLPointAnnotation()
         annotation.coordinate = (routeModel?.destinationLocation)!
         mapView.addAnnotation(annotation)
+        // Center the map on the destination
+        mapView.setCenter((self.routeModel?.destinationLocation)!, zoomLevel: 11, animated: false)
     }
     
     private func clearRouteModel(){
