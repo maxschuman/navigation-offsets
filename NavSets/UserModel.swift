@@ -9,7 +9,19 @@
 import Mapbox
 import MapboxDirections
 
-class UserModel{
+struct PropertyKey{
+    static let carMake = "carMake"
+    static let carModel = "carModel"
+    static let carYear = "carYear"
+    static let CO2GramsPerMile = "CO2GramsPerMile"
+}
+
+class UserModel: NSObject, NSCoding{
+    //MARK: Archiving Paths
+    
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("user")
+    
     // MARK: Properties
     // Can tack on additional properties as necessary
     var carMake: String?
@@ -20,7 +32,7 @@ class UserModel{
     let EMISSIONSCONSTANT: Float = 500.0
     
     // MARK: Initialization
-    init() {
+    override init() {
         carMake = nil
         carModel = nil
         carYear = nil
@@ -33,7 +45,7 @@ class UserModel{
         self.carYear = carYear
     }
     
-    init?(carMake: String, carModel: String, carYear: String, gramsPerMile: Float){
+    init?(carMake: String?, carModel: String?, carYear: String?, gramsPerMile: Float?){
         self.carMake = carMake
         self.carModel = carModel
         self.carYear = carYear
@@ -54,6 +66,22 @@ class UserModel{
         return max(Double(round(100 * Double(cost))/100), 0.01)
         
         
+    }
+    
+    //MARK: NSCoding
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(carMake, forKey: PropertyKey.carMake)
+        aCoder.encode(carModel, forKey: PropertyKey.carModel)
+        aCoder.encode(carYear, forKey: PropertyKey.carYear)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder){
+        let carMake = aDecoder.decodeObject(forKey: PropertyKey.carMake) as? String
+        let carModel = aDecoder.decodeObject(forKey: PropertyKey.carModel) as? String
+        let carYear = aDecoder.decodeObject(forKey: PropertyKey.carYear) as? String
+        let emissions = aDecoder.decodeFloat(forKey: PropertyKey.carMake)
+        
+        self.init(carMake: carMake, carModel: carModel, carYear: carYear, gramsPerMile: emissions)
     }
     
 }
