@@ -43,6 +43,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     let paymentContext: STPPaymentContext
     let customerContext: STPCustomerContext
     let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    let insets = UIEdgeInsets(top: 35, left: 25, bottom: 15, right: 25)
     var paymentInProgress: Bool = false {
         didSet {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
@@ -80,7 +81,8 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         let mapFrame = CGRect(x: 0, y: 150, width: view.bounds.width, height: view.bounds.height - (150+125))
         mapView = MGLMapView(frame: mapFrame, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.setCenter((routeModel?.startLocation)!, zoomLevel: 11, animated: false)
+        let boundingBox = MGLCoordinateBounds(sw: (routeModel?.startLocation)!, ne: (routeModel?.destinationLocation)!)
+        mapView.setVisibleCoordinateBounds(boundingBox, edgePadding: insets, animated: false)
         view.addSubview(mapView)
         view.sendSubview(toBack: mapView) // send the map view to the back, behind the other added UI elements
         
@@ -97,9 +99,6 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         originGeocodeResultsTable.dataSource = self
         originGeocodeResultsTable.isHidden = true
         
-//        let destinationResultsTableFrame = CGRect(x: 20, y: destinationField.bounds.minY, width: 250, height: 230)
-//        destinationGeocodeResultsTable.frame = destinationResultsTableFrame
-//        destinationGeocodeResultsTable.frame.y = destinationField.bounds.minY
         // Add the geocoder
         geocoder = Geocoder.shared
         // Allow the map view to show the user's location
@@ -131,13 +130,8 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                 }
                 
             }
-            
-            
-            
         }
         // add the launch uber button and make it hidden
-        //TODO: fix the button's location
-//        launchUberButton.center = startButton.center
         launchUberButton.frame = startButton.frame
         view.addSubview(launchUberButton)
         launchUberButton.isHidden = true
@@ -163,7 +157,7 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         let originWaypoint = Waypoint(coordinate: origin, name: "Start")
         let destinationWaypoint = Waypoint(coordinate: destination, name: "Finish")
         let options = NavigationRouteOptions(waypoints: [originWaypoint, destinationWaypoint], profileIdentifier: profileID)
-        options.includesAlternativeRoutes = true
+//        options.includesAlternativeRoutes = true
         
         // clear the previous annotations
         if (mapView.annotations != nil) {
@@ -238,6 +232,9 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
             polyline.width = 5.0
         }
         mapView.addAnnotation(polyline)
+        // recenter the mapView
+        let boundingBox = MGLCoordinateBounds(sw: (routeModel?.startLocation)!, ne: (routeModel?.destinationLocation)!)
+        mapView.setVisibleCoordinateBounds(boundingBox, edgePadding: insets, animated: false)
     }
     
     func mapView(_ mapView: MGLMapView, strokeColorForShapeAnnotation annotation: MGLShape) -> UIColor {
@@ -437,9 +434,13 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     
     @IBAction func startNav(_ sender: UIButton) {
         if sender === startButton{
-//            self.presentNavigation(along: directionsRoute!)
-            self.paymentInProgress = true
-            paymentContext.requestPayment()
+            if (selectedTransitButton == carButton) || (selectedTransitButton == uberButton){
+                self.paymentInProgress = true
+                paymentContext.requestPayment()
+            }
+            else {
+                self.presentNavigation(along: directionsRoute!)
+            }
         }
         
     }
