@@ -117,6 +117,7 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.modelPicker.reloadAllComponents()
         self.yearPicker.reloadAllComponents()
         setSaveEnabled()
+        updateUserModel()
         
     }
     
@@ -132,11 +133,6 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     */
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        self.userModel?.carMake = self.makes[self.makePicker.selectedRow(inComponent: 0)]
-        self.userModel?.carModel = self.models[self.modelPicker.selectedRow(inComponent: 0)]
-        self.userModel?.carYear = self.years[self.yearPicker.selectedRow(inComponent: 0)]
-        self.userModel?.CO2GramsPerMile = self.data[(self.userModel?.carMake!)!]![(self.userModel?.carModel!)!]![(self.userModel?.carYear!)!]!
-        
         dismiss(animated: true, completion: nil)
     }
     
@@ -193,6 +189,16 @@ class SettingsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
         self.saveButton.isEnabled = make != "" && model != "" && year != ""
 
+    }
+    
+    func updateUserModel(){
+        if saveButton.isEnabled{
+            self.userModel?.carMake = self.makes[self.makePicker.selectedRow(inComponent: 0)]
+            self.userModel?.carModel = self.models[self.modelPicker.selectedRow(inComponent: 0)]
+            self.userModel?.carYear = self.years[self.yearPicker.selectedRow(inComponent: 0)]
+            self.userModel?.CO2GramsPerMile = self.data[(self.userModel?.carMake!)!]![(self.userModel?.carModel!)!]![(self.userModel?.carYear!)!]!
+        }
+        
     }
     
     
