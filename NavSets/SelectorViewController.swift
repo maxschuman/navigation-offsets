@@ -14,6 +14,7 @@ import MapboxDirections
 import MapboxGeocoder
 import UberRides
 import Stripe
+import os.log
 
 class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewDelegate, UITableViewDataSource, UITableViewDelegate, STPPaymentContextDelegate {
     //MARK: Properties
@@ -68,6 +69,10 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let user = loadUser(){
+            self.userModel = user
+        }
 
         // Add map view to base view
         let url = URL(string: "mapbox://styles/mapbox/streets-v10")
@@ -492,6 +497,8 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
                     print ("Error calculating route")
                 }
             }
+            
+            saveUser()
         }
     }
     
@@ -539,6 +546,20 @@ class SelectorViewController: UIViewController, UITextFieldDelegate, MGLMapViewD
         }
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: Private Functions
+    private func saveUser(){
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.userModel, toFile: UserModel.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadUser() -> UserModel?  {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: UserModel.ArchiveURL.path) as? UserModel
     }
 
 }
